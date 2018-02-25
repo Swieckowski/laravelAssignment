@@ -1,14 +1,12 @@
 import React from 'react'
 import { Router } from 'react-router'
 import { Route, Switch } from 'react-router-dom'
-
-import { Home } from './components/'
-
+import history from './history'
 
 export default function Routes() {
     // For now only creating the routes for users that are not logged in
     return (
-        <Router>
+        <Router history={history}>
             <Switch>
                 {/* These Routes need to be created */}
                 {/* <Route exact path='/' component={Login} />
