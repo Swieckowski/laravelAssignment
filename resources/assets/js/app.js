@@ -9,10 +9,7 @@ import ReactDOM from 'react-dom'
 
 ReactDOM.render(
 //   <Provider store={store}>
-//     <Routes />
 //   </Provider>,
-    <div className="test">
-        Hello please work!
-    </div>,
+    <Routes />,
   document.getElementById('app')
 )
