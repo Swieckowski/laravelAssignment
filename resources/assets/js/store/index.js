@@ -8,4 +8,4 @@ const reducer = combineReducers({loggedIn})
 const store = createStore(reducer, applyMiddleware(thunkMiddleware, createLogger()))
 
 export default store
-// export * from 'loggedIn'
+export * from './loggedIn'

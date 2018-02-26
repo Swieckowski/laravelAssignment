@@ -8,7 +8,7 @@ const LOG_OUT = 'LOG_OUT'
  * ACTION CREATORS
  */
 export const logInAction = payload => ({type: LOG_IN})
-export const LogOutAction = payload => ({type: LOG_OUT})
+export const logOutAction = payload => ({type: LOG_OUT})
 
 /**
  * THUNKS
@@ -23,7 +23,7 @@ export default function (state = { loggedIn: true }, action) {
         case LOG_IN:
             return Object.assign({}, state, {loggedIn: true})
         case LOG_OUT:
-            return Object.assign({}, state, {loggedIn: true})
+            return Object.assign({}, state, {loggedIn: false})
         default:
             return state
     }

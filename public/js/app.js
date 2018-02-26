@@ -23604,6 +23604,7 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux_thunk__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux_thunk___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_redux_thunk__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__loggedIn__ = __webpack_require__(99);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__loggedIn__["b"]; });
 
 
 
@@ -23613,7 +23614,7 @@ var reducer = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers 
 var store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(reducer, Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(__WEBPACK_IMPORTED_MODULE_2_redux_thunk___default.a, Object(__WEBPACK_IMPORTED_MODULE_1_redux_logger__["createLogger"])()));
 
 /* harmony default export */ __webpack_exports__["a"] = (store);
-// export * from 'loggedIn'
+
 
 /***/ }),
 /* 97 */
@@ -23658,7 +23659,7 @@ exports['default'] = thunk;
 
 "use strict";
 /* unused harmony export logInAction */
-/* unused harmony export LogOutAction */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return logOutAction; });
 /**
  * ACTION TYPES
  */
@@ -23671,7 +23672,7 @@ var LOG_OUT = 'LOG_OUT';
 var logInAction = function logInAction(payload) {
   return { type: LOG_IN };
 };
-var LogOutAction = function LogOutAction(payload) {
+var logOutAction = function logOutAction(payload) {
   return { type: LOG_OUT };
 };
 
@@ -23691,7 +23692,7 @@ var LogOutAction = function LogOutAction(payload) {
     case LOG_IN:
       return Object.assign({}, state, { loggedIn: true });
     case LOG_OUT:
-      return Object.assign({}, state, { loggedIn: true });
+      return Object.assign({}, state, { loggedIn: false });
     default:
       return state;
   }
@@ -25914,13 +25915,16 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 /* harmony export (immutable) */ __webpack_exports__["a"] = Home;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__LogOutButton__ = __webpack_require__(125);
+
 
 
 function Home() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         null,
-        'Hey! It looks like you\'re logged in!'
+        'Hey! It looks like you\'re logged in!',
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__LogOutButton__["a" /* default */], null)
     );
 }
 
@@ -25929,6 +25933,43 @@ function Home() {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 124 */,
+/* 125 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(96);
+
+
+
+
+function LogOutButton(props) {
+    // For now only creating the routes for users that are not logged in
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'button',
+        {
+            className: 'logOutButton',
+            onClick: props.logOut
+        },
+        'Log Out'
+    );
+}
+
+var mapDispatch = function mapDispatch(dispatch) {
+    return {
+        logOut: function logOut() {
+            console.log("dispatching");
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__store__["b" /* logOutAction */])());
+        }
+    };
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(null, mapDispatch)(LogOutButton));
 
 /***/ })
 /******/ ]);
