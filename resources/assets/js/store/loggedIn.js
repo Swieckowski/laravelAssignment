@@ -18,7 +18,7 @@ export const LogOutAction = payload => ({type: LOG_OUT})
 /**
  * REDUCER
  */
-export default function (state = { loggedIn: false }, action) {
+export default function (state = { loggedIn: true }, action) {
     switch (action.type) {
         case LOG_IN:
             return Object.assign({}, state, {loggedIn: true})
