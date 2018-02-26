@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // Will need to import a dispatch here!
 
 
-export default class Login extends Component {
+export default class Signup extends Component {
     constructor(props) {
         super(props);
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            repeatPassword: ""
         };
         this.handleChange = this.handleChange.bind(this);
         this.submitHandler = this.submitHandler.bind(this);
@@ -45,7 +46,14 @@ export default class Login extends Component {
                     value={this.state.password}
                     onChange={(event) => { handleChange(event) }}
                 />
-                <Link to="/Signup">Signup</Link>
+                <input className="textInput" type='text'
+                    name="repeatPassword"
+                    placeholder="confirm password"
+                    value={this.state.repeatPassword}
+                    onChange={(event) => { handleChange(event) }}
+                />
+                <Link to="/Login">Login</Link>
+
             </div>
         )
     }
@@ -57,4 +65,4 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-// export default connect(null, mapDispatchToProps)(Login);
+// export default connect(null, mapDispatchToProps)(Signup);
