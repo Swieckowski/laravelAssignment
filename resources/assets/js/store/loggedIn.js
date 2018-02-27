@@ -1,3 +1,4 @@
+import learUserAction from './user.js'
 /**
  * ACTION TYPES
  */
@@ -18,7 +19,7 @@ export const logOutAction = payload => ({type: LOG_OUT})
 /**
  * REDUCER
  */
-export default function (state = { loggedIn: true }, action) {
+export default function (state = { loggedIn: false }, action) {
     switch (action.type) {
         case LOG_IN:
             return Object.assign({}, state, {loggedIn: true})
