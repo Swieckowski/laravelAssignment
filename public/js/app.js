@@ -2527,18 +2527,18 @@ function verifyPlainObject(value, displayName, methodName) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux_thunk___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_redux_thunk__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__loggedIn__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__user__ = __webpack_require__(128);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__loggedIn__["c"]; });
-/* unused harmony namespace reexport */
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_3__loggedIn__["c"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_4__user__["a"]; });
 
 
 
 
 
 
-var reducer = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({ loggedIn: __WEBPACK_IMPORTED_MODULE_3__loggedIn__["a" /* default */], user: __WEBPACK_IMPORTED_MODULE_4__user__["a" /* default */] });
+var reducer = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({ loggedIn: __WEBPACK_IMPORTED_MODULE_3__loggedIn__["a" /* default */], user: __WEBPACK_IMPORTED_MODULE_4__user__["b" /* default */] });
 var store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(reducer, Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(__WEBPACK_IMPORTED_MODULE_2_redux_thunk___default.a, Object(__WEBPACK_IMPORTED_MODULE_1_redux_logger__["createLogger"])()));
 
-/* harmony default export */ __webpack_exports__["a"] = (store);
+/* harmony default export */ __webpack_exports__["b"] = (store);
 
 
 
@@ -4066,7 +4066,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __WEBPACK_IMPORTED_MODULE_2_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
   __WEBPACK_IMPORTED_MODULE_3_react_redux__["a" /* Provider */],
-  { store: __WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */] },
+  { store: __WEBPACK_IMPORTED_MODULE_4__store__["b" /* default */] },
   __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__routes__["a" /* default */], null)
 ), document.getElementById('app'));
 
@@ -25805,6 +25805,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store__ = __webpack_require__(36);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -25818,8 +25819,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-
-// Will need to import a dispatch here!
 
 
 var Signup = function (_Component) {
@@ -25852,6 +25851,7 @@ var Signup = function (_Component) {
         value: function submitHandler(evt) {
             evt.preventDefault();
             this.props.handleSubmit(this.state);
+            this.setState({ email: "", password: "", repeatPassword: "" });
         }
     }, {
         key: "render",
@@ -25909,7 +25909,7 @@ var Signup = function (_Component) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
         handleSubmit: function handleSubmit(state) {
-            // dispatch(updateCampus(ownProps.id, state));
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["a" /* addUser */])({ email: state.email, password: state.password }));
         }
     };
 };
@@ -25966,7 +25966,7 @@ var mapDispatch = function mapDispatch(dispatch) {
     return {
         logOut: function logOut() {
             console.log("dispatching");
-            dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__store__["b" /* logOutAction */])());
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__store__["c" /* logOutAction */])());
         }
     };
 };
@@ -26399,7 +26399,7 @@ module.exports = defaults;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export addUser */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addUser; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__loggedIn__ = __webpack_require__(37);
@@ -26440,7 +26440,7 @@ var addUser = function addUser(user) {
 /**
  * REDUCER
  */
-/* harmony default export */ __webpack_exports__["a"] = (function () {
+/* harmony default export */ __webpack_exports__["b"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { email: null };
   var action = arguments[1];
 

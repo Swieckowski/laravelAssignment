@@ -1,9 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from "react"
+import { connect } from "react-redux"
 import { Link } from 'react-router-dom'
-
-// Will need to import a dispatch here!
-
+import { addUser } from '../store'
 
 export default class Signup extends Component {
     constructor(props) {
@@ -26,6 +24,7 @@ export default class Signup extends Component {
     submitHandler(evt) {
         evt.preventDefault();
         this.props.handleSubmit(this.state);
+        this.setState({email:"",password:"",repeatPassword:""});
     }
 
     render() {
@@ -62,7 +61,7 @@ export default class Signup extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
     handleSubmit(state) {
-        // dispatch(updateCampus(ownProps.id, state));
+        dispatch(addUser({email: state.email, password: state.password}))
     }
 });
 
