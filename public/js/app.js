@@ -1569,7 +1569,7 @@ var loginUser = function loginUser(user) {
     __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('login/', user).then(function (response) {
       return response.data;
     }).then(function (data) {
-      dispatch(userLoadAction(data.email));
+      dispatch(userLoadAction({ id: data.id, email: data.email }));
       dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__loggedIn__["b" /* logInAction */])());
     }).catch(function (error) {
       console.log(error);
@@ -1581,12 +1581,12 @@ var loginUser = function loginUser(user) {
  * REDUCER
  */
 /* harmony default export */ __webpack_exports__["b"] = (function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { email: null, signupFail: false, loginFail: false };
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { id: null, email: null, signupFail: false, loginFail: false };
   var action = arguments[1];
 
   switch (action.type) {
     case GOT_USER:
-      return Object.assign({}, state, { email: action.payload });
+      return Object.assign({}, state, { id: action.payload.id, email: action.payload.email });
     case LOGIN_FAIL:
       return Object.assign({}, state, { loginFail: true });
     case SIGNUP_FAIL:

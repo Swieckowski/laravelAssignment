@@ -27,8 +27,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function tries()
+    public function attempts()
     {
-        return $this->hasMany(Try::class);
+        return $this->hasMany(Attempt::class);
     }
 }
