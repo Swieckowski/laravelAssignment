@@ -25842,9 +25842,11 @@ var Signup = function (_Component) {
     _createClass(Signup, [{
         key: "handleChange",
         value: function handleChange(event) {
+            var _setState;
+
             var value = event.target.value;
             var inputElement = event.target.name;
-            this.setState(_defineProperty({}, inputElement, value));
+            this.setState((_setState = {}, _defineProperty(_setState, inputElement, value), _defineProperty(_setState, "failed", false), _setState));
         }
     }, {
         key: "submitHandler",
@@ -25858,44 +25860,51 @@ var Signup = function (_Component) {
         value: function render() {
             var handleChange = this.handleChange;
             var submitHandler = this.submitHandler;
-
+            console.log(this.props);
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
                 { className: "credentials" },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: "textInput", type: "text",
-                    name: "email",
-                    placeholder: "email",
-                    value: this.state.email,
-                    onChange: function onChange(event) {
-                        handleChange(event);
-                    }
-                }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: "textInput", type: "text",
-                    name: "password",
-                    placeholder: "password",
-                    value: this.state.password,
-                    onChange: function onChange(event) {
-                        handleChange(event);
-                    }
-                }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: "textInput", type: "text",
-                    name: "repeatPassword",
-                    placeholder: "confirm password",
-                    value: this.state.repeatPassword,
-                    onChange: function onChange(event) {
-                        handleChange(event);
-                    }
-                }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "button",
-                    { type: "submit" },
-                    "Submit"
+                    "form",
+                    { onSubmit: function onSubmit(evt) {
+                            return submitHandler(evt);
+                        } },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: "textInput", type: "text",
+                        name: "email",
+                        placeholder: "email",
+                        value: this.state.email,
+                        onChange: function onChange(event) {
+                            handleChange(event);
+                        }
+                    }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: "textInput", type: "text",
+                        name: "password",
+                        placeholder: "password",
+                        value: this.state.password,
+                        onChange: function onChange(event) {
+                            handleChange(event);
+                        }
+                    }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: "textInput", type: "text",
+                        name: "repeatPassword",
+                        placeholder: "confirm password",
+                        value: this.state.repeatPassword,
+                        onChange: function onChange(event) {
+                            handleChange(event);
+                        }
+                    }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "button",
+                        { type: "submit" },
+                        "Submit"
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["a" /* Link */],
+                        { to: "/Login" },
+                        "Login"
+                    )
                 ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["a" /* Link */],
-                    { to: "/Login" },
-                    "Login"
-                )
+                this.props.signupFail ? "Something about your sign up request went wrong, perhaps you already have an account" : null
             );
         }
     }]);
@@ -25903,18 +25912,22 @@ var Signup = function (_Component) {
     return Signup;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* harmony default export */ __webpack_exports__["a"] = (Signup);
-
+var mapStateToProps = function mapStateToProps(state) {
+    return {
+        signupFail: state.user.signupFail
+    };
+};
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
         handleSubmit: function handleSubmit(state) {
+            console.log("handler");
             dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["a" /* addUser */])({ email: state.email, password: state.password }));
         }
     };
 };
 
-// export default connect(null, mapDispatchToProps)(Signup);
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(Signup));
 
 /***/ }),
 /* 122 */
@@ -26410,6 +26423,8 @@ module.exports = defaults;
  * ACTION TYPES
  */
 var GOT_USER = 'GOT_USER';
+var LOGIN_FAIL = 'LOGIN_FAIL';
+var SIGNUP_FAIL = 'SIGNUP_FAIL';
 
 /**
  * ACTION CREATORS
@@ -26419,6 +26434,12 @@ var userLoadAction = function userLoadAction(data) {
     type: GOT_USER,
     payload: data
   };
+};
+var signupFailAction = function signupFailAction(payload) {
+  return { type: SIGNUP_FAIL };
+};
+var loginFailAction = function loginFailAction(payload) {
+  return { type: LOGIN_FAIL };
 };
 
 /**
@@ -26433,7 +26454,8 @@ var addUser = function addUser(user) {
       dispatch(userLoadAction(data.email));
       dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__loggedIn__["b" /* logInAction */])());
     }).catch(function (error) {
-      return console.log(error);
+      console.log(error);
+      dispatch(signupFailAction());
     });
   };
 };
@@ -26441,12 +26463,16 @@ var addUser = function addUser(user) {
  * REDUCER
  */
 /* harmony default export */ __webpack_exports__["b"] = (function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { email: null };
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { email: null, signupFail: false, loginFail: false };
   var action = arguments[1];
 
   switch (action.type) {
     case GOT_USER:
-      return { email: action.payload };
+      return Object.assign({}, state, { email: action.payload });
+    case LOGIN_FAIL:
+      return Object.assign({}, state, { loginFail: true });
+    case SIGNUP_FAIL:
+      return Object.assign({}, state, { signupFail: true });
     default:
       return state;
   }
