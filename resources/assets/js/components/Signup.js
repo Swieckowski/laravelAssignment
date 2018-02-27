@@ -24,7 +24,7 @@ class Signup extends Component {
     submitHandler(evt) {
         evt.preventDefault();
         this.props.handleSubmit(this.state);
-        this.setState({ email: "", password: "", repeatPassword: ""});
+        this.setState({ email: "", password: "", repeatPassword: "" });
     }
 
     render() {
@@ -53,9 +53,9 @@ class Signup extends Component {
                         onChange={(event) => { handleChange(event) }}
                     />
                     <button type="submit">Submit</button>
-                    <Link to="/Login">Login</Link>
                 </form>
-                {this.props.signupFail ? "Something about your sign up request went wrong, perhaps you already have an account.": null}
+                {this.props.signupFail ? "Something about your sign up request went wrong, perhaps you already have an account." : null}
+                <Link to="/Login">Already have an account? Log in.</Link>
             </div>
         )
     }

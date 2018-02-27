@@ -29,7 +29,6 @@ export const addUser = (user) => dispatch => {
 	axios.post('/signup/', user)
 	.then((response) =>response.data)
 	.then(data => {
-        console.log("data")
         dispatch(userLoadAction(data.email))
         dispatch(logInAction())
 
@@ -37,6 +36,20 @@ export const addUser = (user) => dispatch => {
 	.catch(error=>{
         console.log(error)
         dispatch(signupFailAction())
+    });
+}
+
+export const loginUser = (user) => dispatch => {
+	axios.post('login/', user)
+	.then((response) =>response.data)
+	.then(data => {
+        dispatch(userLoadAction(data.email))
+        dispatch(logInAction())
+
+	})
+	.catch(error=>{
+        console.log(error)
+        dispatch(loginFailAction())
     });
 }
 /**

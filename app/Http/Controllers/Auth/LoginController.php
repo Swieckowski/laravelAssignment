@@ -2,38 +2,34 @@
 
 namespace App\Http\Controllers\Auth;
 
+use DB;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
+    public function create()
+    {   
+        // $email = request()->input('user.email');
+        // $password = request()->input('user.password');
 
-    use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+        $user = DB::table('users')
+            ->where('email', '=', request()->input('email'))
+            ->get();
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
+        if($user){
+            if (Hash::check(request()->input('password'), $user->pluck('password')[0])) {
+                return response()->json($user, 201);
+            }
+        }
+
+        $returnData = array(
+            'status' => 'error',
+            'message' => 'Incorrect email or passowrd!'
+        );
+        return response()->json($returnData, 401);
+
     }
 }

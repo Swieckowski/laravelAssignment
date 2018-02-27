@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { loginUser } from '../store'
 
-// Will need to import a dispatch here!
-
-
-export default class Login extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -33,28 +31,36 @@ export default class Login extends Component {
 
         return (
             <div className="credentials">
-                <input className="textInput" type='text'
-                    name="email"
-                    placeholder="email"
-                    value={this.state.email}
-                    onChange={(event) => { handleChange(event) }}
-                />
-                <input className="textInput" type='text'
-                    name="password"
-                    placeholder="password"
-                    value={this.state.password}
-                    onChange={(event) => { handleChange(event) }}
-                />
-                <Link to="/Signup">Signup</Link>
+                <form onSubmit={evt => submitHandler(evt)}>
+                    <input className="textInput" type='text'
+                        name="email"
+                        placeholder="email"
+                        value={this.state.email}
+                        onChange={(event) => { handleChange(event) }}
+                    />
+                    <input className="textInput" type='text'
+                        name="password"
+                        placeholder="password"
+                        value={this.state.password}
+                        onChange={(event) => { handleChange(event) }}
+                    />
+                    <button type="submit">Submit</button>
+                </form>
+                {this.props.loginFail ? "Sorry, but you entered the wrong username or password." : null}
+                <Link to="/Signup">Signup for our service</Link>
             </div>
         )
     }
 }
 
+const mapStateToProps = (state) => ({
+    loginFail: state.user.loginFail
+})
+
 const mapDispatchToProps = (dispatch) => ({
     handleSubmit(state) {
-        // dispatch(updateCampus(ownProps.id, state));
+        dispatch(loginUser({ email: state.email, password: state.password }))
     }
 });
 
-// export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
