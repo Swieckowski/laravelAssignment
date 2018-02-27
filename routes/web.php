@@ -14,3 +14,5 @@
 Route::get('{all}', function () {
     return view('welcome');
 })->where('all', '.*');
+
+Route::post('/signup', 'Auth\RegisterController@store');
