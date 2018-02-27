@@ -52,6 +52,7 @@ export default class Signup extends Component {
                     value={this.state.repeatPassword}
                     onChange={(event) => { handleChange(event) }}
                 />
+                <button type="submit">Submit</button>
                 <Link to="/Login">Login</Link>
 
             </div>
