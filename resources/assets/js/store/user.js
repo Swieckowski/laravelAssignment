@@ -7,6 +7,7 @@ import {logInAction} from "./loggedIn"
 const GOT_USER = 'GOT_USER'
 const LOGIN_FAIL = 'LOGIN_FAIL'
 const SIGNUP_FAIL = 'SIGNUP_FAIL'
+const CLEAR_USER = 'CLEAR_USER'
 
 /**
  * ACTION CREATORS
@@ -19,6 +20,7 @@ const userLoadAction = (data) => {
 }
 const signupFailAction = payload => ({type: SIGNUP_FAIL})
 const loginFailAction = payload => ({type: LOGIN_FAIL})
+export const clearUserAction = payload => ({type: CLEAR_USER})
 
 /**
  * THUNKS
@@ -48,6 +50,8 @@ export default function (state = { email: null, signupFail: false, loginFail: fa
             return Object.assign({}, state, {loginFail: true})
         case SIGNUP_FAIL:
             return Object.assign({}, state, {signupFail: true})
+        case CLEAR_USER:
+            return state
         default:
             return state
     }

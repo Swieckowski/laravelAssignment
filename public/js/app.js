@@ -2549,6 +2549,8 @@ var store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(r
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return logInAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return logOutAction; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user_js__ = __webpack_require__(128);
+
 /**
  * ACTION TYPES
  */
@@ -25904,7 +25906,7 @@ var Signup = function (_Component) {
                         "Login"
                     )
                 ),
-                this.props.signupFail ? "Something about your sign up request went wrong, perhaps you already have an account" : null
+                this.props.signupFail ? "Something about your sign up request went wrong, perhaps you already have an account." : null
             );
         }
     }]);
@@ -25921,7 +25923,6 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
         handleSubmit: function handleSubmit(state) {
-            console.log("handler");
             dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["a" /* addUser */])({ email: state.email, password: state.password }));
         }
     };
@@ -26412,6 +26413,7 @@ module.exports = defaults;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export clearUserAction */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addUser; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
@@ -26425,6 +26427,7 @@ module.exports = defaults;
 var GOT_USER = 'GOT_USER';
 var LOGIN_FAIL = 'LOGIN_FAIL';
 var SIGNUP_FAIL = 'SIGNUP_FAIL';
+var CLEAR_USER = 'CLEAR_USER';
 
 /**
  * ACTION CREATORS
@@ -26440,6 +26443,9 @@ var signupFailAction = function signupFailAction(payload) {
 };
 var loginFailAction = function loginFailAction(payload) {
   return { type: LOGIN_FAIL };
+};
+var clearUserAction = function clearUserAction(payload) {
+  return { type: CLEAR_USER };
 };
 
 /**
@@ -26473,6 +26479,8 @@ var addUser = function addUser(user) {
       return Object.assign({}, state, { loginFail: true });
     case SIGNUP_FAIL:
       return Object.assign({}, state, { signupFail: true });
+    case CLEAR_USER:
+      return state;
     default:
       return state;
   }

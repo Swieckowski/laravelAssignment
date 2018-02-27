@@ -55,7 +55,7 @@ class Signup extends Component {
                     <button type="submit">Submit</button>
                     <Link to="/Login">Login</Link>
                 </form>
-                {this.props.signupFail ? "Something about your sign up request went wrong, perhaps you already have an account": null}
+                {this.props.signupFail ? "Something about your sign up request went wrong, perhaps you already have an account.": null}
             </div>
         )
     }
@@ -67,7 +67,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     handleSubmit(state) {
-        console.log("handler")
         dispatch(addUser({ email: state.email, password: state.password }))
     }
 });
