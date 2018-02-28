@@ -882,9 +882,11 @@ module.exports = warning;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__loggedIn__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__user__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__attempts__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__questions__ = __webpack_require__(155);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_3__loggedIn__["c"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_4__user__["a"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_4__user__["c"]; });
+/* unused harmony namespace reexport */
 /* unused harmony namespace reexport */
 
 
@@ -893,10 +895,12 @@ module.exports = warning;
 
 
 
-var reducer = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({ loggedIn: __WEBPACK_IMPORTED_MODULE_3__loggedIn__["a" /* default */], user: __WEBPACK_IMPORTED_MODULE_4__user__["b" /* default */], attempts: __WEBPACK_IMPORTED_MODULE_5__attempts__["a" /* default */] });
+
+var reducer = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({ loggedIn: __WEBPACK_IMPORTED_MODULE_3__loggedIn__["a" /* default */], user: __WEBPACK_IMPORTED_MODULE_4__user__["b" /* default */], attempts: __WEBPACK_IMPORTED_MODULE_5__attempts__["a" /* default */], questions: __WEBPACK_IMPORTED_MODULE_6__questions__["a" /* default */] });
 var store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(reducer, Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(__WEBPACK_IMPORTED_MODULE_2_redux_thunk___default.a, Object(__WEBPACK_IMPORTED_MODULE_1_redux_logger__["createLogger"])()));
 
 /* harmony default export */ __webpack_exports__["b"] = (store);
+
 
 
 
@@ -27935,6 +27939,69 @@ var addAttempt = function addAttempt(user_id) {
     case GOT_ATTEMPTS:
       return action.payload;
     case CLEAR_ATTEMPTS:
+      return state;
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+/* 155 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export clearQuestionsAction */
+/* unused harmony export loadQuestions */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+
+
+/**
+ * ACTION TYPES
+ */
+var GOT_QUESTIONS = 'GOT_QUESTIONS';
+var CLEAR_QUESTIONS = 'CLEAR_QUESTIONS';
+
+/**
+ * ACTION CREATORS
+ */
+var questionsLoadAction = function questionsLoadAction(data) {
+  return {
+    type: GOT_QUESTIONS,
+    payload: data
+  };
+};
+
+var clearQuestionsAction = function clearQuestionsAction(payload) {
+  return { type: CLEAR_QUESTIONS };
+};
+
+/**
+ * THUNKS
+ */
+var loadQuestions = function loadQuestions() {
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/questions/').then(function (response) {
+      return response.data;
+    }).then(function (data) {
+      return dispatch(questionsLoadAction(data));
+    }).catch(function (error) {
+      return console.log(error);
+    });
+  };
+};
+
+/**
+ * REDUCER
+ */
+/* harmony default export */ __webpack_exports__["a"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+  switch (action.type) {
+    case GOT_QUESTIONS:
+      return action.payload;
+    case CLEAR_QUESTIONS:
       return state;
     default:
       return state;
