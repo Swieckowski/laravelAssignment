@@ -881,19 +881,23 @@ module.exports = warning;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux_thunk___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_redux_thunk__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__loggedIn__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__user__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__attempts__ = __webpack_require__(154);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_3__loggedIn__["c"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_4__user__["a"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_4__user__["c"]; });
+/* unused harmony namespace reexport */
 
 
 
 
 
 
-var reducer = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({ loggedIn: __WEBPACK_IMPORTED_MODULE_3__loggedIn__["a" /* default */], user: __WEBPACK_IMPORTED_MODULE_4__user__["b" /* default */] });
+
+var reducer = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({ loggedIn: __WEBPACK_IMPORTED_MODULE_3__loggedIn__["a" /* default */], user: __WEBPACK_IMPORTED_MODULE_4__user__["b" /* default */], attempts: __WEBPACK_IMPORTED_MODULE_5__attempts__["a" /* default */] });
 var store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(reducer, Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(__WEBPACK_IMPORTED_MODULE_2_redux_thunk___default.a, Object(__WEBPACK_IMPORTED_MODULE_1_redux_logger__["createLogger"])()));
 
 /* harmony default export */ __webpack_exports__["b"] = (store);
+
 
 
 
@@ -27859,6 +27863,83 @@ var mapDispatch = function mapDispatch(dispatch) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 153 */,
+/* 154 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export clearAttemptsAction */
+/* unused harmony export loadAttempts */
+/* unused harmony export addAttempt */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+
+
+/**
+ * ACTION TYPES
+ */
+var GOT_ATTEMPTS = 'GOT_ATTEMPTS';
+var CLEAR_ATTEMPTS = 'CLEAR_ATTEMPTS';
+
+/**
+ * ACTION CREATORS
+ */
+var attemptsLoadAction = function attemptsLoadAction(data) {
+  return {
+    type: GOT_ATTEMPTS,
+    payload: data
+  };
+};
+
+var clearAttemptsAction = function clearAttemptsAction(payload) {
+  return { type: CLEAR_ATTEMPTS };
+};
+
+/**
+ * THUNKS
+ */
+var loadAttempts = function loadAttempts(user_id) {
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/attempts/' + user_id).then(function (response) {
+      return response.data;
+    }).then(function (data) {
+      return dispatch(attemptsLoadAction(data));
+    }).catch(function (error) {
+      return console.log(error);
+    });
+  };
+};
+
+var addAttempt = function addAttempt(user_id) {
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/attempts/', user_id).then(function (response) {
+      return response.data;
+    }).then(function (data) {
+      dispatch(loadAttempt(user_id));
+    }).catch(function (error) {
+      console.log(error);
+    });
+  };
+};
+
+/**
+ * REDUCER
+ */
+/* harmony default export */ __webpack_exports__["a"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+  switch (action.type) {
+    case GOT_ATTEMPTS:
+      return action.payload;
+    case CLEAR_ATTEMPTS:
+      return state;
+    default:
+      return state;
+  }
+});
 
 /***/ })
 /******/ ]);
