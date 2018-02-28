@@ -43,7 +43,7 @@ export const loginUser = (user) => dispatch => {
 	axios.post('login/', user)
 	.then((response) =>response.data)
 	.then(data => {
-        dispatch(userLoadAction(data.email))
+        dispatch(userLoadAction({id: data.id, email: data.email}))
         dispatch(logInAction())
 
 	})
@@ -55,10 +55,10 @@ export const loginUser = (user) => dispatch => {
 /**
  * REDUCER
  */
-export default function (state = { email: null, signupFail: false, loginFail: false }, action) {
+export default function (state = { id: null, email: null, signupFail: false, loginFail: false }, action) {
     switch (action.type) {
         case GOT_USER:
-            return Object.assign({}, state, {email: action.payload})
+            return Object.assign({}, state, {id: action.payload.id, email: action.payload.email})
         case LOGIN_FAIL:
             return Object.assign({}, state, {loginFail: true})
         case SIGNUP_FAIL:
