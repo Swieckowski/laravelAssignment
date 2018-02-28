@@ -29,7 +29,7 @@ class AttemptController extends Controller
     public function store()
     {   
         $newAttempt = Attempt::create([
-            'user_id' => request()->input('id'),
+            'user_id' => request()->input('user_id'),
         ]);
         return response()->json($newAttempt, 201);
     }

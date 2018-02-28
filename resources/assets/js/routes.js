@@ -21,7 +21,9 @@ function Routes(props) {
         </Router>
     );
     else return (
-       <Home />
+        <Router history={history}>
+            <Home />
+        </Router>
     )
 }
 

@@ -30,7 +30,6 @@ class Signup extends Component {
     render() {
         const handleChange = this.handleChange;
         const submitHandler = this.submitHandler;
-        console.log(this.props)
         return (
             <div className="credentials">
                 <form onSubmit={evt => submitHandler(evt)}>

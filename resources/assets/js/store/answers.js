@@ -1,5 +1,6 @@
 import axios from "axios"
 
+const initialState = []
 /**
  * ACTION TYPES
  */
@@ -53,7 +54,7 @@ export const changeAnswer = (answer_id, answer, attempt_id) => dispatch => {
 /**
  * REDUCER
  */
-export default function (state = [], action) {
+export default function (state = initialState, action) {
     switch (action.type) {
         case GOT_ANSWERS:
             return action.payload
