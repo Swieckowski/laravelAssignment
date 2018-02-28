@@ -9,12 +9,18 @@ import Signup from './components/Signup'
 import Home from './components/Home'
 import Questionnaire from './components/Questionnaire'
 
-import { loadAttempts, loadQuestions } from './store'
+import { userLoadAction, logInAction, loadQuestions } from './store'
 
 
 class Routes extends Component {
     componentDidMount() {
         this.props.loadData()
+        const user = window.localStorage.getItem('user')
+        console.log(user)
+        if (user) {
+            console.log(JSON.parse(user))
+            this.props.login(JSON.parse(user))
+        }
     }
 
     render(){      
@@ -24,7 +30,6 @@ class Routes extends Component {
                     <Route exact path='/' component={Login} />
                     <Route path='/Login' component={Login} />
                     <Route path='/Signup' component={Signup} />
-                    <Redirect to='/' />
                 </Switch>
             </Router>
         );
@@ -47,6 +52,10 @@ const mapState = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     loadData() {
         dispatch(loadQuestions())
+    }, 
+    login(user){
+        dispatch(userLoadAction(user))
+        dispatch(logInAction())
     }
 });
 
