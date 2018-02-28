@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use DB;
+use App\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -15,13 +15,12 @@ class LoginController extends Controller
         // $password = request()->input('user.password');
 
 
-        $user = DB::table('users')
-            ->where('email', '=', request()->input('email'))
+        $user = User::where('email', '=', request()->input('email'))
             ->get();
 
         if($user){
             if (Hash::check(request()->input('password'), $user->pluck('password')[0])) {
-                return response()->json($user, 201);
+                return response()->json($user[0], 201);
             }
         }
 

@@ -1,6 +1,7 @@
 import axios from "axios"
 import {logInAction} from "./loggedIn"
 
+const initialState = { id: null, email: null, signupFail: false, loginFail: false };
 /**
  * ACTION TYPES
  */
@@ -26,7 +27,7 @@ export const clearUserAction = payload => ({type: CLEAR_USER})
  * THUNKS
  */
 export const addUser = (user) => dispatch => {
-	axios.post('/signup/', user)
+	axios.post('/signup', user)
 	.then((response) =>response.data)
 	.then(data => {
         dispatch(userLoadAction(data.email))
@@ -40,7 +41,7 @@ export const addUser = (user) => dispatch => {
 }
 
 export const loginUser = (user) => dispatch => {
-	axios.post('login/', user)
+	axios.post('/login', user)
 	.then((response) =>response.data)
 	.then(data => {
         dispatch(userLoadAction({id: data.id, email: data.email}))
@@ -55,7 +56,7 @@ export const loginUser = (user) => dispatch => {
 /**
  * REDUCER
  */
-export default function (state = { id: null, email: null, signupFail: false, loginFail: false }, action) {
+export default function (state = initialState, action) {
     switch (action.type) {
         case GOT_USER:
             return Object.assign({}, state, {id: action.payload.id, email: action.payload.email})
@@ -64,7 +65,7 @@ export default function (state = { id: null, email: null, signupFail: false, log
         case SIGNUP_FAIL:
             return Object.assign({}, state, {signupFail: true})
         case CLEAR_USER:
-            return state
+            return initialState
         default:
             return state
     }

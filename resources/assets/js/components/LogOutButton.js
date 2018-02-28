@@ -1,6 +1,8 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {logOutAction} from '../store'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom';
+import { Redirect } from 'react-router-dom'
+import { logOutAction, clearUserAction } from '../store'
 
 
 function LogOutButton(props) {
@@ -14,12 +16,12 @@ function LogOutButton(props) {
 
 }
 
-const mapDispatch = (dispatch) => ({
-    logOut(){
-        console.log("dispatching")
-        dispatch(logOutAction())
-        
+const mapDispatch = (dispatch, ownProps) => ({
+    logOut(history){
+        dispatch(logOutAction()) 
+        dispatch(clearUserAction())
+        ownProps.history.push('/');       
     }
 })
 
-export default connect(null, mapDispatch)(LogOutButton)
+export default withRouter(connect(null, mapDispatch)(LogOutButton))

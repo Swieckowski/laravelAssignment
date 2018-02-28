@@ -1,5 +1,6 @@
 import axios from "axios"
 
+const initialState = []
 /**
  * ACTION TYPES
  */
@@ -29,7 +30,8 @@ export const loadAttempts = (user_id) => dispatch => {
 }
 
 export const addAttempt = (user_id) => dispatch => {
-	axios.post('/attempts/', user_id)
+    console.log({user_id})
+	axios.post('/attempts/', {user_id})
 	.then((response) =>response.data)
 	.then(data => {
         dispatch(loadAttempts(user_id))
@@ -43,7 +45,7 @@ export const addAttempt = (user_id) => dispatch => {
 /**
  * REDUCER
  */
-export default function (state = [], action) {
+export default function (state = initialState, action) {
     switch (action.type) {
         case GOT_ATTEMPTS:
             return action.payload
