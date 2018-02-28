@@ -577,10 +577,12 @@ module.exports = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__attempts__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__questions__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__answers__ = __webpack_require__(159);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_3__loggedIn__["c"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_3__loggedIn__["b"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_3__loggedIn__["c"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_4__user__["a"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_4__user__["b"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_4__user__["d"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_4__user__["d"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "n", function() { return __WEBPACK_IMPORTED_MODULE_4__user__["e"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_5__attempts__["a"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_5__attempts__["c"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_6__questions__["b"]; });
@@ -625,19 +627,19 @@ var store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(r
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Prompt__ = __webpack_require__(143);
 /* unused harmony reexport Prompt */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(144);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_6__Redirect__["a"]; });
+/* unused harmony reexport Redirect */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(62);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(29);
 /* unused harmony reexport Router */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(145);
 /* unused harmony reexport StaticRouter */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Switch__ = __webpack_require__(146);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_10__Switch__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_10__Switch__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__matchPath__ = __webpack_require__(147);
 /* unused harmony reexport matchPath */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__withRouter__ = __webpack_require__(148);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_12__withRouter__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_12__withRouter__["a"]; });
 
 
 
@@ -1577,6 +1579,7 @@ var logOutAction = function logOutAction(payload) {
     case LOG_IN:
       return Object.assign({}, state, { loggedIn: true });
     case LOG_OUT:
+      window.localStorage.removeItem('user');
       return Object.assign({}, state, { loggedIn: false });
     default:
       return state;
@@ -1588,6 +1591,7 @@ var logOutAction = function logOutAction(payload) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return userLoadAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return clearUserAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return loginUser; });
@@ -1610,70 +1614,73 @@ var CLEAR_USER = 'CLEAR_USER';
  * ACTION CREATORS
  */
 var userLoadAction = function userLoadAction(data) {
-  return {
-    type: GOT_USER,
-    payload: data
-  };
+    return {
+        type: GOT_USER,
+        payload: data
+    };
 };
 var signupFailAction = function signupFailAction(payload) {
-  return { type: SIGNUP_FAIL };
+    return { type: SIGNUP_FAIL };
 };
 var loginFailAction = function loginFailAction(payload) {
-  return { type: LOGIN_FAIL };
+    return { type: LOGIN_FAIL };
 };
 var clearUserAction = function clearUserAction(payload) {
-  return { type: CLEAR_USER };
+    return { type: CLEAR_USER };
 };
 
 /**
  * THUNKS
  */
 var addUser = function addUser(user) {
-  return function (dispatch) {
-    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/signup', user).then(function (response) {
-      return response.data;
-    }).then(function (data) {
-      dispatch(userLoadAction(data.email));
-      dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__loggedIn__["b" /* logInAction */])());
-    }).catch(function (error) {
-      console.log(error);
-      dispatch(signupFailAction());
-    });
-  };
+    return function (dispatch) {
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/signup', user).then(function (response) {
+            return response.data;
+        }).then(function (data) {
+            dispatch(userLoadAction({ id: data.id, email: data.email }));
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__loggedIn__["b" /* logInAction */])());
+            window.localStorage.setItem('user', JSON.stringify({ id: data.id, email: data.email }));
+        }).catch(function (error) {
+            console.log(error);
+            dispatch(signupFailAction());
+        });
+    };
 };
 
 var loginUser = function loginUser(user) {
-  return function (dispatch) {
-    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/login', user).then(function (response) {
-      return response.data;
-    }).then(function (data) {
-      dispatch(userLoadAction({ id: data.id, email: data.email }));
-      dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__loggedIn__["b" /* logInAction */])());
-    }).catch(function (error) {
-      console.log(error);
-      dispatch(loginFailAction());
-    });
-  };
+    return function (dispatch) {
+        console.log(user);
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/login', user).then(function (response) {
+            return response.data;
+        }).then(function (data) {
+            dispatch(userLoadAction({ id: data.id, email: data.email }));
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__loggedIn__["b" /* logInAction */])());
+            window.localStorage.setItem('user', JSON.stringify({ id: data.id, email: data.email }));
+        }).catch(function (error) {
+            console.log(error);
+            dispatch(loginFailAction());
+        });
+    };
 };
 /**
  * REDUCER
  */
 /* harmony default export */ __webpack_exports__["c"] = (function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-  var action = arguments[1];
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+    var action = arguments[1];
 
-  switch (action.type) {
-    case GOT_USER:
-      return Object.assign({}, state, { id: action.payload.id, email: action.payload.email });
-    case LOGIN_FAIL:
-      return Object.assign({}, state, { loginFail: true });
-    case SIGNUP_FAIL:
-      return Object.assign({}, state, { signupFail: true });
-    case CLEAR_USER:
-      return initialState;
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case GOT_USER:
+            return Object.assign({}, state, { id: action.payload.id, email: action.payload.email });
+        case LOGIN_FAIL:
+            return Object.assign({}, state, { loginFail: true });
+        case SIGNUP_FAIL:
+            return Object.assign({}, state, { signupFail: true });
+        case CLEAR_USER:
+            return initialState;
+        default:
+            return state;
+    }
 });
 
 /***/ }),
@@ -25769,6 +25776,12 @@ var Routes = function (_Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             this.props.loadData();
+            var user = window.localStorage.getItem('user');
+            console.log(user);
+            if (user) {
+                console.log(JSON.parse(user));
+                this.props.login(JSON.parse(user));
+            }
         }
     }, {
         key: 'render',
@@ -25777,22 +25790,21 @@ var Routes = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* Router */],
                 { history: __WEBPACK_IMPORTED_MODULE_4__history__["a" /* default */] },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["d" /* Switch */],
+                    __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Switch */],
                     null,
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_5__components_Login__["a" /* default */] }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/Login', component: __WEBPACK_IMPORTED_MODULE_5__components_Login__["a" /* default */] }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/Signup', component: __WEBPACK_IMPORTED_MODULE_6__components_Signup__["a" /* default */] }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Redirect */], { to: '/' })
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_5__components_Login__["a" /* default */] }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/Login', component: __WEBPACK_IMPORTED_MODULE_5__components_Login__["a" /* default */] }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/Signup', component: __WEBPACK_IMPORTED_MODULE_6__components_Signup__["a" /* default */] })
                 )
             );else return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* Router */],
                 { history: __WEBPACK_IMPORTED_MODULE_4__history__["a" /* default */] },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["d" /* Switch */],
+                    __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Switch */],
                     null,
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_7__components_Home__["a" /* default */] }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/questionnaire/:attempt_id', component: __WEBPACK_IMPORTED_MODULE_8__components_Questionnaire__["a" /* default */] }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/', component: __WEBPACK_IMPORTED_MODULE_7__components_Home__["a" /* default */] })
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_7__components_Home__["a" /* default */] }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/questionnaire/:attempt_id', component: __WEBPACK_IMPORTED_MODULE_8__components_Questionnaire__["a" /* default */] }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/', component: __WEBPACK_IMPORTED_MODULE_7__components_Home__["a" /* default */] })
                 )
             );
         }
@@ -25811,6 +25823,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
         loadData: function loadData() {
             dispatch(Object(__WEBPACK_IMPORTED_MODULE_9__store__["j" /* loadQuestions */])());
+        },
+        login: function login(user) {
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_9__store__["n" /* userLoadAction */])(user));
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_9__store__["k" /* logInAction */])());
         }
     };
 };
@@ -27695,7 +27711,7 @@ NavLink.defaultProps = {
 // Written in this round about way for babel-transform-imports
 
 
-/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Redirect__["a" /* default */]);
+/* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Redirect__["a" /* default */]);
 
 /***/ }),
 /* 145 */
@@ -27870,7 +27886,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
         handleSubmit: function handleSubmit(state) {
-            dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["l" /* loginUser */])({ email: state.email, password: state.password }));
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["m" /* loginUser */])({ email: state.email, password: state.password }));
         }
     };
 };
@@ -28218,14 +28234,14 @@ function LogOutButton(props) {
 var mapDispatch = function mapDispatch(dispatch, ownProps) {
     return {
         logOut: function logOut(history) {
-            dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["k" /* logOutAction */])());
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["l" /* logOutAction */])());
             dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["f" /* clearUserAction */])());
             ownProps.history.push('/');
         }
     };
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["e" /* withRouter */])(Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(null, mapDispatch)(LogOutButton)));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["d" /* withRouter */])(Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(null, mapDispatch)(LogOutButton)));
 
 /***/ }),
 /* 155 */

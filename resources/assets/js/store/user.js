@@ -13,7 +13,7 @@ const CLEAR_USER = 'CLEAR_USER'
 /**
  * ACTION CREATORS
  */
-const userLoadAction = (data) => {
+export const userLoadAction = (data) => {
 	return {
 		type: GOT_USER,
 		payload: data
@@ -30,9 +30,9 @@ export const addUser = (user) => dispatch => {
 	axios.post('/signup', user)
 	.then((response) =>response.data)
 	.then(data => {
-        dispatch(userLoadAction(data.email))
+        dispatch(userLoadAction({id: data.id, email: data.email}))
         dispatch(logInAction())
-
+        window.localStorage.setItem('user', JSON.stringify({id: data.id, email: data.email}))
 	})
 	.catch(error=>{
         console.log(error)
@@ -41,12 +41,13 @@ export const addUser = (user) => dispatch => {
 }
 
 export const loginUser = (user) => dispatch => {
+    console.log(user)
 	axios.post('/login', user)
 	.then((response) =>response.data)
 	.then(data => {
         dispatch(userLoadAction({id: data.id, email: data.email}))
         dispatch(logInAction())
-
+        window.localStorage.setItem('user', JSON.stringify({id: data.id, email: data.email}))
 	})
 	.catch(error=>{
         console.log(error)
