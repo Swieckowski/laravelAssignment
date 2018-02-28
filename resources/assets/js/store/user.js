@@ -44,7 +44,6 @@ export const loginUser = (user) => dispatch => {
 	axios.post('/login', user)
 	.then((response) =>response.data)
 	.then(data => {
-        console.log("first response data", data)
         dispatch(userLoadAction({id: data.id, email: data.email}))
         dispatch(logInAction())
 

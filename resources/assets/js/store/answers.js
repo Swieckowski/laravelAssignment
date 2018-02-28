@@ -17,7 +17,7 @@ const answersLoadAction = (data) => {
 	}
 }
 
-export const clearQuestionsAction = payload => ({type: CLEAR_QUESTIONS})
+export const clearAnswersAction = payload => ({type: CLEAR_ANSWERS})
 
 /**
  * THUNKS
@@ -25,13 +25,14 @@ export const clearQuestionsAction = payload => ({type: CLEAR_QUESTIONS})
 export const loadAnswers = (attempt_id) => dispatch => {
 	axios.get(`/attempt/answers/${attempt_id}`)
 	.then(response => response.data)
-	.then(data => dispatch(answersLoadAction(data)))
+	.then(data => {
+		dispatch(answersLoadAction(data))
+	})
 	.catch(error=>console.log(error));
 }
 
 export const addAnswer = (user_id, attempt_id, question_id, answer) => dispatch => {
 	const answerData = {user_id, attempt_id, question_id, answer}
-	console.log(answerData)
 	axios.post('/answer/', answerData)
 	.then((response) =>response.data)
 	.then(data => {
@@ -60,7 +61,7 @@ export default function (state = initialState, action) {
         case GOT_ANSWERS:
             return action.payload
         case CLEAR_ANSWERS:
-            return state
+            return initialState
         default:
             return state
     }

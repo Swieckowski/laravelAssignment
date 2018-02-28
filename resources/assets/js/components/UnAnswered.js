@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom'
 import { loginUser } from '../store'
 
 export default class UnAnswered extends Component {
@@ -21,7 +20,12 @@ export default class UnAnswered extends Component {
 
     submitHandler(evt) {
         evt.preventDefault();
-        this.props.handleSubmit(this.state.selectedOption);
+        if(this.props.edit){
+            this.props.handleSubmit(this.props.answer.id, this.state.selectedOption)
+            this.props.toggleEdit()
+        } else {
+            this.props.handleSubmit(this.state.selectedOption)
+        }
     }
 
     render() {

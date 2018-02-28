@@ -1,32 +1,41 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom'
-import { addAttempt } from '../store'
+import { addAttempt, clearAnswersAction } from '../store'
 
-function Questionnaires(props) {
+class Questionnaires extends Component {
+    constructor(props) {
+        super(props);
+    }
 
-    return (
-        <div>
-            <h1>Questionnaires</h1>
-            <div className="questionnaires">
+    componentDidMount() {
+        this.props.resetAnswers()
+    }
 
-                {props.attempts.length ?
-                    <ul>
-                        {props.attempts.map(attempt => (
-                            <li key={attempt.id}>
-                                <Link className="questionaireLink" to={`/questionnaire/${attempt.id}`}>
-                                    questionnaire
-                                </Link>
-                            </li>
-                        ))}
-                    </ul> : "You haven't created any questionnaires yet"}
-
-            </div>
-            <button
-                className='questionnaireButton'
-                onClick={() => props.addQuestionnaire(props.user_id)}
-            >create a new questionnaire</button>
-        </div>)
+    render(){
+        return (
+            <div>
+                <h1>Questionnaires</h1>
+                <div className="questionnaires">
+    
+                    {this.props.attempts.length ?
+                        <ul>
+                            {this.props.attempts.map(attempt => (
+                                <li key={attempt.id}>
+                                    <Link className="questionaireLink" to={`/questionnaire/${attempt.id}`}>
+                                        questionnaire
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul> : "You haven't created any questionnaires yet"}
+    
+                </div>
+                <button
+                    className='questionnaireButton'
+                    onClick={() => this.props.addQuestionnaire(this.props.user_id)}
+                >create a new questionnaire</button>
+            </div>)
+    }
 }
 
 const mapStateToProps = (state) => ({
@@ -37,6 +46,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     addQuestionnaire(user_id) {
         dispatch(addAttempt(user_id))
+    },
+    resetAnswers(){
+        dispatch(clearAnswersAction())
     }
 });
 
