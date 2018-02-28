@@ -27921,7 +27921,7 @@ var addAttempt = function addAttempt(user_id) {
     __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/attempts/', user_id).then(function (response) {
       return response.data;
     }).then(function (data) {
-      dispatch(loadAttempt(user_id));
+      dispatch(loadAttempts(user_id));
     }).catch(function (error) {
       console.log(error);
     });

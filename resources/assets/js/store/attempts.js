@@ -32,7 +32,7 @@ export const addAttempt = (user_id) => dispatch => {
 	axios.post('/attempts/', user_id)
 	.then((response) =>response.data)
 	.then(data => {
-        dispatch(loadAttempt(user_id))
+        dispatch(loadAttempts(user_id))
 	})
 	.catch(error=>{
         console.log(error)
