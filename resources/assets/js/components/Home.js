@@ -7,7 +7,7 @@ import { loadAttempts } from '../store'
 
 class Home extends Component {
     componentDidMount() {
-        this.props.loadQuestionnaire(this.props.user_id)
+        this.props.loadData(this.props.user_id)
     }
 
     render() {
@@ -26,7 +26,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    loadQuestionnaire(user_id) {
+    loadData(user_id) {
         dispatch(loadAttempts(user_id))
     }
 });

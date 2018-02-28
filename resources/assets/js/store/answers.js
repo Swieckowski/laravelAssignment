@@ -12,7 +12,7 @@ const CLEAR_ANSWERS = 'CLEAR_ANSWERS'
  */
 const answersLoadAction = (data) => {
 	return {
-		type: GOT_QUESTIONS,
+		type: GOT_ANSWERS,
 		payload: data
 	}
 }
@@ -30,8 +30,9 @@ export const loadAnswers = (attempt_id) => dispatch => {
 }
 
 export const addAnswer = (user_id, attempt_id, question_id, answer) => dispatch => {
-    const answerData = {user_id, attempt_id, question_id, answer}
-	axios.post('/answers/', answerData)
+	const answerData = {user_id, attempt_id, question_id, answer}
+	console.log(answerData)
+	axios.post('/answer/', answerData)
 	.then((response) =>response.data)
 	.then(data => {
         dispatch(loadAnswers(attempt_id))
