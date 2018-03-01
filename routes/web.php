@@ -19,7 +19,7 @@ Route::get('/attempts/{user_id}', 'AttemptController@userIndex');
 Route::get('/attempt/answers/{attempt_id}', 'AttemptController@attemptAnswersIndex');
 
 Route::get('{all}', function () {
-    return view('welcome');
+    return view('index');
 })->where('all', '.*');
 
 // POST
