@@ -10,7 +10,7 @@ class QuestionsController extends Controller
 {
     public function index()
     {   
-        $questions = DB::table('questions')::all();
+        $questions = DB::table('questions')->get();
         return response()->json($questions, 200);
     }
 }
