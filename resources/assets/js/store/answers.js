@@ -33,7 +33,7 @@ export const loadAnswers = (attempt_id) => dispatch => {
 
 export const addAnswer = (user_id, attempt_id, question_id, answer) => dispatch => {
 	const answerData = {user_id, attempt_id, question_id, answer}
-	axios.post('/answer', answerData)
+	axios.post('/answer/', answerData)
 	.then((response) =>response.data)
 	.then(data => {
         dispatch(loadAnswers(attempt_id))
