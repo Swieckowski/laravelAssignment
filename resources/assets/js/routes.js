@@ -28,6 +28,7 @@ class Routes extends Component {
                     <Route exact path='/' component={Login} />
                     <Route path='/Login' component={Login} />
                     <Route path='/Signup' component={Signup} />
+                    <Redirect to="/" />
                 </Switch>
             </Router>
         );
@@ -36,7 +37,6 @@ class Routes extends Component {
                 <Switch>
                     <Route exact path='/' component={Home} />
                     <Route path="/questionnaire/:attempt_id" component={Questionnaire} />
-                    <Redirect to="/" />
                 </Switch>
             </Router>
         )
