@@ -30,7 +30,7 @@ export const loadAttempts = (user_id) => dispatch => {
 }
 
 export const addAttempt = (user_id) => dispatch => {
-	axios.post('/attempts/', {user_id})
+	axios.post('/attempts', {user_id})
 	.then((response) =>response.data)
 	.then(data => {
         dispatch(loadAttempts(user_id))

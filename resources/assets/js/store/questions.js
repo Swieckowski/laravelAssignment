@@ -23,7 +23,7 @@ export const clearQuestionsAction = payload => ({type: CLEAR_QUESTIONS})
  * THUNKS
  */
 export const loadQuestions = () => dispatch => {
-	axios.get('/questions/')
+	axios.get('/questions')
 	.then(response => response.data)
 	.then(data => dispatch(questionsLoadAction(data)))
 	.catch(error=>console.log(error));

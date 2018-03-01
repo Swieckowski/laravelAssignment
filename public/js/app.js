@@ -3447,7 +3447,7 @@ var loadAttempts = function loadAttempts(user_id) {
 
 var addAttempt = function addAttempt(user_id) {
   return function (dispatch) {
-    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/attempts/', { user_id: user_id }).then(function (response) {
+    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/attempts', { user_id: user_id }).then(function (response) {
       return response.data;
     }).then(function (data) {
       dispatch(loadAttempts(user_id));
@@ -3511,7 +3511,7 @@ var clearQuestionsAction = function clearQuestionsAction(payload) {
  */
 var loadQuestions = function loadQuestions() {
   return function (dispatch) {
-    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/questions/').then(function (response) {
+    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/questions').then(function (response) {
       return response.data;
     }).then(function (data) {
       return dispatch(questionsLoadAction(data));
@@ -28569,7 +28569,7 @@ var loadAnswers = function loadAnswers(attempt_id) {
 var addAnswer = function addAnswer(user_id, attempt_id, question_id, answer) {
 	return function (dispatch) {
 		var answerData = { user_id: user_id, attempt_id: attempt_id, question_id: question_id, answer: answer };
-		__WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/answer/', answerData).then(function (response) {
+		__WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/answer', answerData).then(function (response) {
 			return response.data;
 		}).then(function (data) {
 			dispatch(loadAnswers(attempt_id));
