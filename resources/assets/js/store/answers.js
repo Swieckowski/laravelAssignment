@@ -44,7 +44,7 @@ export const addAnswer = (user_id, attempt_id, question_id, answer) => dispatch 
 }
 
 export const changeAnswer = (answer_id, answer, attempt_id) => dispatch => {
-	axios.put('/answer/', {answer_id, answer})
+	axios.put('/answer', {answer_id, answer})
 	.then((response) =>response.data)
 	.then(data => {
         dispatch(loadAnswers(attempt_id))

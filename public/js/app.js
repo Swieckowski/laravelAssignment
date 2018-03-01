@@ -28582,7 +28582,7 @@ var addAnswer = function addAnswer(user_id, attempt_id, question_id, answer) {
 
 var changeAnswer = function changeAnswer(answer_id, answer, attempt_id) {
 	return function (dispatch) {
-		__WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/answer/', { answer_id: answer_id, answer: answer }).then(function (response) {
+		__WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/answer', { answer_id: answer_id, answer: answer }).then(function (response) {
 			return response.data;
 		}).then(function (data) {
 			dispatch(loadAnswers(attempt_id));

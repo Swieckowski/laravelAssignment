@@ -9,9 +9,6 @@ use DB;
 class AnswerController extends Controller
 {
 
-    // DB::table('users')->insert(
-    //     ['email' => 'john@example.com', 'votes' => 0]
-    // );
     public function store()
     {   
         $answer = DB::table('answers') ->insert([
