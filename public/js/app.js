@@ -3447,7 +3447,6 @@ var loadAttempts = function loadAttempts(user_id) {
 
 var addAttempt = function addAttempt(user_id) {
   return function (dispatch) {
-    console.log({ user_id: user_id });
     __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/attempts/', { user_id: user_id }).then(function (response) {
       return response.data;
     }).then(function (data) {
