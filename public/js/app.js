@@ -28335,6 +28335,7 @@ var Questionnaire = function (_Component) {
                     return answer.question_id === question.id;
                 })) return false;else return true;
             });
+            console.log("123");
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
                 { className: "container" },
