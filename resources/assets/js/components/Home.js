@@ -11,7 +11,7 @@ class Home extends Component {
     }
 
     render() {
-
+        console.log(props)
         return (
             <div className="container">
                 <div className="apart">

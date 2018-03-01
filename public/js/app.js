@@ -28096,7 +28096,7 @@ var Home = function (_Component) {
     }, {
         key: "render",
         value: function render() {
-
+            console.log(props);
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
                 { className: "container" },
