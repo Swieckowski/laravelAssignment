@@ -1,6 +1,12 @@
 <?php
 
-// $url = parse_url(getenv("mysql://bd3d3ddf3d74d4:46ba37b5@us-cdbr-iron-east-05.cleardb.net/heroku_ae8a60c612633f9?reconnect=true"));
+$url = parse_url(getenv("mysql://bd3d3ddf3d74d4:46ba37b5@us-cdbr-iron-east-05.cleardb.net/heroku_ae8a60c612633f9?reconnect=true"));
+
+$host = $url["host"];
+$port = $url["port"];
+$username = $url["user"];
+$password = $url["pass"];
+$database = substr($url["path"], 1);
 
 return [
 
@@ -46,7 +52,7 @@ return [
             'host' => "us-cdbr-iron-east-05.cleardb.net",
             'database' => "heroku_ae8a60c612633f9",
             'username' => "bd3d3ddf3d74d4",
-            'password' =>" 46ba37b5",
+            'password' => "46ba37b5",
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
