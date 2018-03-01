@@ -28092,7 +28092,6 @@ var Home = function (_Component) {
         key: "componentDidMount",
         value: function componentDidMount() {
             this.props.loadData(this.props.user_id);
-            this.props.history.push("/");
         }
     }, {
         key: "render",
