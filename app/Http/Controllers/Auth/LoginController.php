@@ -11,10 +11,6 @@ class LoginController extends Controller
 {
     public function create()
     {   
-        // $email = request()->input('user.email');
-        // $password = request()->input('user.password');
-
-
         $user = User::where('email', '=', request()->input('email'))
             ->get();
 

@@ -28570,7 +28570,7 @@ var loadAnswers = function loadAnswers(attempt_id) {
 var addAnswer = function addAnswer(user_id, attempt_id, question_id, answer) {
 	return function (dispatch) {
 		var answerData = { user_id: user_id, attempt_id: attempt_id, question_id: question_id, answer: answer };
-		__WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/answer/', answerData).then(function (response) {
+		__WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/answer', answerData).then(function (response) {
 			return response.data;
 		}).then(function (data) {
 			dispatch(loadAnswers(attempt_id));
