@@ -14,7 +14,7 @@ class Questionnaires extends Component {
 
     render(){
         return (
-            <div>
+            <div className="questionnaire">
                 <h1>Questionnaires</h1>
                 <div className="questionnaires">
     
@@ -23,7 +23,7 @@ class Questionnaires extends Component {
                             {this.props.attempts.map(attempt => (
                                 <li key={attempt.id}>
                                     <Link className="questionaireLink" to={`/questionnaire/${attempt.id}`}>
-                                        questionnaire
+                                        Qns. | created: {attempt.created_at.slice(0,10)} 
                                     </Link>
                                 </li>
                             ))}
@@ -34,6 +34,7 @@ class Questionnaires extends Component {
                     className='questionnaireButton'
                     onClick={() => this.props.addQuestionnaire(this.props.user_id)}
                 >create a new questionnaire</button>
+                <br/>
             </div>)
     }
 }

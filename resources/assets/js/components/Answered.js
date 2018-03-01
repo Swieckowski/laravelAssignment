@@ -2,10 +2,10 @@ import React from 'react'
 
 export default function Answered(props) {
     return (
-        <div className="answeredQuestion">
-            Question: {props.question.question}
+        <div className="answered">
+            <div className="question">{props.question.question}</div>
             <br/>
-            Answer: {props.answer.answer}
+            {props.answer.answer}
         </div>
     );
 

@@ -5059,10 +5059,10 @@ if(false) {
 
 exports = module.exports = __webpack_require__(67)(false);
 // imports
-
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Nunito);", ""]);
 
 // module
-exports.push([module.i, ".test {\n  background-color: #F37748; }\n", ""]);
+exports.push([module.i, "body {\n  font-family: 'Nunito'; }\n\n.container {\n  display: flex;\n  align-items: center;\n  flex-direction: column;\n  width: 100vw; }\n\ninput {\n  text-align: center; }\n\nform {\n  display: flex;\n  flex-direction: column; }\n\n.credentials {\n  background-color: #b4ed95;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: 25vw;\n  justify-content: space-around;\n  border-radius: .5em; }\n\n.credentials2 {\n  background-color: #b4ed95;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: 25vw;\n  justify-content: space-around;\n  border-radius: .5em; }\n\n.questionnaire {\n  background-color: #b4ed95;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: 25vw;\n  justify-content: space-around;\n  border-radius: .5em; }\n\n.answered {\n  background-color: #b4ed95;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: 25vw;\n  justify-content: space-around;\n  border-radius: .5em; }\n\n.answeredEdit {\n  background-color: #70a6ff;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: 25vw;\n  justify-content: space-around;\n  border-radius: .5em; }\n\n.unanswered {\n  background-color: #70a6ff;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: 25vw;\n  justify-content: space-around;\n  border-radius: .5em;\n  margin-bottom: 1em; }\n\n.Warning {\n  text-align: center;\n  color: red; }\n\n.textInput {\n  width: 15em; }\n\n.apart {\n  display: flex;\n  width: 25vw;\n  justify-content: space-between; }\n\nbutton {\n  font-family: 'Nunito'; }\n\n.logOutButton {\n  font-family: 'Nunito';\n  font-weight: bold;\n  color: white;\n  display: flex;\n  align-self: center;\n  height: 2em;\n  background-color: #f74302;\n  border-radius: .35em; }\n\nul {\n  list-style: none;\n  padding-left: 0;\n  text-align: center; }\n\n.toggleAnswer {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin-bottom: 1em; }\n\n.toggle1 {\n  width: 10em;\n  background-color: #b4ed95;\n  border-radius: 0em 0em 1.5em 1.5em; }\n\n.toggle2 {\n  width: 10em;\n  background-color: #70a6ff;\n  border-radius: 0em 0em 1.5em 1.5em; }\n\n.question {\n  font-weight: bold; }\n\n.submit {\n  display: flex;\n  align-self: center;\n  text-align: center;\n  width: 5em; }\n", ""]);
 
 // exports
 
@@ -25777,9 +25777,7 @@ var Routes = function (_Component) {
         value: function componentDidMount() {
             this.props.loadData();
             var user = window.localStorage.getItem('user');
-            console.log(user);
             if (user) {
-                console.log(JSON.parse(user));
                 this.props.login(JSON.parse(user));
             }
         }
@@ -27836,39 +27834,53 @@ var Login = function (_Component) {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
-                { className: "credentials" },
+                { className: "container" },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "form",
-                    { onSubmit: function onSubmit(evt) {
-                            return submitHandler(evt);
-                        } },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: "textInput", type: "text",
-                        name: "email",
-                        placeholder: "email",
-                        value: this.state.email,
-                        onChange: function onChange(event) {
-                            handleChange(event);
-                        }
-                    }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: "textInput", type: "text",
-                        name: "password",
-                        placeholder: "password",
-                        value: this.state.password,
-                        onChange: function onChange(event) {
-                            handleChange(event);
-                        }
-                    }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        "button",
-                        { type: "submit" },
-                        "Submit"
-                    )
+                    "h1",
+                    null,
+                    "AbleTo Questionnaire Assignment"
                 ),
-                this.props.loginFail ? "Sorry, but you entered the wrong username or password." : null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["a" /* Link */],
-                    { to: "/Signup" },
-                    "Signup for our service"
+                    "div",
+                    { className: "credentials" },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "form",
+                        { onSubmit: function onSubmit(evt) {
+                                return submitHandler(evt);
+                            } },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: "textInput", type: "text", required: true,
+                            name: "email",
+                            placeholder: "email",
+                            value: this.state.email,
+                            onChange: function onChange(event) {
+                                handleChange(event);
+                            }
+                        }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: "passwordInput", type: "password", required: true,
+                            name: "password",
+                            placeholder: "password",
+                            value: this.state.password,
+                            onChange: function onChange(event) {
+                                handleChange(event);
+                            }
+                        }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "button",
+                            { type: "submit" },
+                            "login"
+                        )
+                    ),
+                    this.props.loginFail ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "Warning" },
+                        "Sorry, but you entered an invalid username or password."
+                    ) : null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["a" /* Link */],
+                        { to: "/Signup" },
+                        "Signup for our service"
+                    )
                 )
             );
         }
@@ -27959,47 +27971,66 @@ var Signup = function (_Component) {
             var submitHandler = this.submitHandler;
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
-                { className: "credentials" },
+                { className: "container" },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "form",
-                    { onSubmit: function onSubmit(evt) {
-                            return submitHandler(evt);
-                        } },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: "textInput", type: "text",
-                        name: "email",
-                        placeholder: "email",
-                        value: this.state.email,
-                        onChange: function onChange(event) {
-                            handleChange(event);
-                        }
-                    }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: "textInput", type: "text",
-                        name: "password",
-                        placeholder: "password",
-                        value: this.state.password,
-                        onChange: function onChange(event) {
-                            handleChange(event);
-                        }
-                    }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: "textInput", type: "text",
-                        name: "repeatPassword",
-                        placeholder: "confirm password",
-                        value: this.state.repeatPassword,
-                        onChange: function onChange(event) {
-                            handleChange(event);
-                        }
-                    }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        "button",
-                        { type: "submit" },
-                        "Submit"
-                    )
+                    "h1",
+                    null,
+                    "AbleTo Questionnaire Assignment"
                 ),
-                this.props.signupFail ? "Something about your sign up request went wrong, perhaps you already have an account." : null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["a" /* Link */],
-                    { to: "/Login" },
-                    "Already have an account? Log in."
+                    "div",
+                    { className: "credentials2" },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "form",
+                        { onSubmit: function onSubmit(evt) {
+                                return submitHandler(evt);
+                            } },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: "textInput", type: "text", required: true,
+                            name: "email",
+                            placeholder: "email",
+                            value: this.state.email,
+                            onChange: function onChange(event) {
+                                handleChange(event);
+                            }
+                        }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: "passwordInput", type: "password", required: true,
+                            name: "password",
+                            placeholder: "password",
+                            value: this.state.password,
+                            onChange: function onChange(event) {
+                                handleChange(event);
+                            }
+                        }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: "passwordInput", type: "password", required: true,
+                            name: "repeatPassword",
+                            placeholder: "confirm password",
+                            value: this.state.repeatPassword,
+                            onChange: function onChange(event) {
+                                handleChange(event);
+                            }
+                        }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "button",
+                            { disabled: this.state.password !== this.state.repeatPassword, type: "submit" },
+                            "Signup"
+                        ),
+                        this.state.password !== this.state.repeatPassword ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "div",
+                            { className: "Warning" },
+                            "Passwords must match"
+                        ) : null
+                    ),
+                    this.props.signupFail ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "Warning" },
+                        "Something about your sign up request went wrong, perhaps you already have an account."
+                    ) : null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["a" /* Link */],
+                        { to: "/Login" },
+                        "Already have an account? Log in."
+                    )
                 )
             );
         }
@@ -28069,9 +28100,17 @@ var Home = function (_Component) {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
-                null,
-                "Hey! It looks like you're logged in!",
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__LogOutButton__["a" /* default */], null),
+                { className: "container" },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "div",
+                    { className: "apart" },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "h1",
+                        null,
+                        "Welcome!"
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__LogOutButton__["a" /* default */], null)
+                ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Questionnaires__["a" /* default */], null)
             );
@@ -28141,7 +28180,7 @@ var Questionnaires = function (_Component) {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                null,
+                { className: 'questionnaire' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h1',
                     null,
@@ -28160,7 +28199,8 @@ var Questionnaires = function (_Component) {
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["a" /* Link */],
                                     { className: 'questionaireLink', to: '/questionnaire/' + attempt.id },
-                                    'questionnaire'
+                                    'Qns. | created: ',
+                                    attempt.created_at.slice(0, 10)
                                 )
                             );
                         })
@@ -28175,7 +28215,8 @@ var Questionnaires = function (_Component) {
                         }
                     },
                     'create a new questionnaire'
-                )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null)
             );
         }
     }]);
@@ -28297,13 +28338,17 @@ var Questionnaire = function (_Component) {
             });
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
-                null,
+                { className: "container" },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["a" /* Link */],
-                    { to: "/" },
-                    "Back to questionnaire list "
+                    "div",
+                    { className: "apart" },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["a" /* Link */],
+                        { to: "/" },
+                        "Back to list "
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__LogOutButton__["a" /* default */], null)
                 ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__LogOutButton__["a" /* default */], null),
                 this.props.answers.length ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "h1",
                     null,
@@ -28324,11 +28369,11 @@ var Questionnaire = function (_Component) {
                         );
                     })
                 ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                unAnsweredQuestions.length ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "h1",
                     null,
                     "Unanswered Questions"
-                ),
+                ) : null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "div",
                     { className: "questionList" },
@@ -28435,8 +28480,8 @@ var Question = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__UnAnswered__["a" /* default */], props),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         "button",
-                        { onClick: this.toggleEditMode },
-                        "toggle edit"
+                        { className: "toggle1", onClick: this.toggleEditMode },
+                        "exit"
                     )
                 );
             } else if (this.props.answered) {
@@ -28446,8 +28491,8 @@ var Question = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Answered__["a" /* default */], props),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         "button",
-                        { onClick: this.toggleEditMode },
-                        "toggle edit"
+                        { className: "toggle2", onClick: this.toggleEditMode },
+                        "edit"
                     )
                 );
             } else {
@@ -28624,11 +28669,17 @@ var UnAnswered = function (_Component) {
         value: function render() {
             var handleChange = this.handleChange;
             var submitHandler = this.submitHandler;
+            var className = void 0;
+            if (this.props.edit) className = "answeredEdit";else className = "unanswered";
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
-                null,
-                this.props.question.question,
+                { className: className },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "div",
+                    { className: "question" },
+                    this.props.question.question
+                ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "form",
                     { onSubmit: function onSubmit(evt) {
@@ -28692,7 +28743,7 @@ var UnAnswered = function (_Component) {
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         "button",
-                        { type: "submit" },
+                        { className: "submit", type: "submit" },
                         "Submit"
                     )
                 )
@@ -28718,11 +28769,13 @@ var UnAnswered = function (_Component) {
 function Answered(props) {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "div",
-        { className: "answeredQuestion" },
-        "Question: ",
-        props.question.question,
+        { className: "answered" },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "question" },
+            props.question.question
+        ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
-        "Answer: ",
         props.answer.answer
     );
 }

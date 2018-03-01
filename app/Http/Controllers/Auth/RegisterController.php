@@ -23,6 +23,6 @@ class RegisterController extends Controller
             'email' => request()->input('email'),
             'password' => Hash::make(request()->input('password')),
         ]);
-        return response()->json($user[0], 201);
+        return response()->json($user, 201);
     }
 }

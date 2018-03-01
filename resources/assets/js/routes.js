@@ -16,9 +16,7 @@ class Routes extends Component {
     componentDidMount() {
         this.props.loadData()
         const user = window.localStorage.getItem('user')
-        console.log(user)
         if (user) {
-            console.log(JSON.parse(user))
             this.props.login(JSON.parse(user))
         }
     }

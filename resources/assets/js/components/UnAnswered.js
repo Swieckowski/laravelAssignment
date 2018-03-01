@@ -31,10 +31,13 @@ export default class UnAnswered extends Component {
     render() {
         const handleChange = this.handleChange;
         const submitHandler = this.submitHandler;
+        let className;
+        if(this.props.edit) className = "answeredEdit";
+        else className = "unanswered"
 
         return (
-            <div>
-                {this.props.question.question}
+            <div className={className}>
+                <div className="question">{this.props.question.question}</div>
                 <form onSubmit={evt => submitHandler(evt)}>
                     <div className="radio">
                         <label>
@@ -76,7 +79,7 @@ export default class UnAnswered extends Component {
                             {this.props.question.d}
                         </label>
                     </div>
-                    <button type="submit">Submit</button>
+                    <button className="submit" type="submit">Submit</button>
                 </form>
             </div>
         )
