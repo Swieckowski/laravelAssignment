@@ -19,7 +19,6 @@ class Questionnaire extends Component {
             if (this.props.answers.find(answer => answer.question_id === question.id)) return false;
             else return true;
         })
-        console.log("123")
         return (
             <div className="container">
                 <div className="apart">
