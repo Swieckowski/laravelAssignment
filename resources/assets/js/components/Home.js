@@ -13,9 +13,11 @@ class Home extends Component {
     render() {
 
         return (
-            <div>
-                Hey! It looks like you're logged in!
-                <LogOutButton />
+            <div className="container">
+                <div className="apart">
+                    <h1>Welcome!</h1>
+                    <LogOutButton />
+                </div>
                 <br />
                 <Questionnaires />
             </div>)

@@ -1,4 +1,152 @@
-.test {
-    background-color: #F37748;
-  }
-  
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+body{
+  font-family: 'Nunito';
+}
+.container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+}  
+
+input{
+  text-align:center;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+}
+
+.credentials{
+  background-color: #b4ed95;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 25vw;
+  justify-content: space-around;
+  border-radius: .5em;
+}
+
+.credentials2{
+  background-color: #b4ed95;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 25vw;
+  justify-content: space-around;
+  border-radius: .5em;
+}
+
+.questionnaire{
+  background-color: #b4ed95;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 25vw;
+  justify-content: space-around;
+  border-radius: .5em;
+}
+
+.answered{
+  background-color: #b4ed95;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 25vw;
+  justify-content: space-around;
+  border-radius: .5em;
+}
+.answeredEdit{
+  background-color: #70a6ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 25vw;
+  justify-content: space-around;
+  border-radius: .5em;
+}
+
+.unanswered{
+  background-color: #70a6ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 25vw;
+  justify-content: space-around;
+  border-radius: .5em;
+  margin-bottom: 1em;
+}
+
+.Warning{
+  text-align: center;
+  color: red;
+}
+
+.textInput{
+  width: 15em;
+}
+
+.apart{
+  display: flex;
+  width: 25vw;
+  justify-content: space-between; 
+}
+
+button{
+  font-family: 'Nunito';
+}
+
+.logOutButton{
+  font-family: 'Nunito';
+  font-weight:bold;   
+  color: white;
+  display: flex;
+  align-self: center;
+  height: 2em;
+  background-color: #f74302;
+  border-radius: .35em;
+}
+
+ul{
+  list-style: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.toggleAnswer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.toggle1{
+  width: 10em;
+  background-color: #b4ed95;
+  border-radius: 0em 0em 1.5em 1.5em ; 
+}
+
+.toggle2{
+  width: 10em;
+  background-color: #70a6ff;
+  border-radius: 0em 0em 1.5em 1.5em ; 
+}
+
+.question{
+  font-weight: bold;
+}
+
+.submit{
+  display: flex;
+  align-self: center;
+  text-align: center;
+  width: 5em;
+}

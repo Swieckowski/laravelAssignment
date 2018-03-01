@@ -27,8 +27,8 @@ class Question extends Component {
             return (
                 <div className="toggleAnswer">
                     <UnAnswered {...props} />
-                    <button onClick={this.toggleEditMode}>
-                        toggle edit
+                    <button className="toggle1" onClick={this.toggleEditMode}>
+                        exit
                     </button>
                 </div>
             )
@@ -36,8 +36,8 @@ class Question extends Component {
             return (
                 <div className="toggleAnswer">
                     <Answered {...props} />
-                    <button onClick={this.toggleEditMode}>
-                        toggle edit
+                    <button className="toggle2"onClick={this.toggleEditMode}>
+                        edit
                      </button>
                 </div>
             )

@@ -30,24 +30,28 @@ class Login extends Component {
         const submitHandler = this.submitHandler;
 
         return (
-            <div className="credentials">
-                <form onSubmit={evt => submitHandler(evt)}>
-                    <input className="textInput" type='text'
-                        name="email"
-                        placeholder="email"
-                        value={this.state.email}
-                        onChange={(event) => { handleChange(event) }}
-                    />
-                    <input className="textInput" type='text'
-                        name="password"
-                        placeholder="password"
-                        value={this.state.password}
-                        onChange={(event) => { handleChange(event) }}
-                    />
-                    <button type="submit">Submit</button>
-                </form>
-                {this.props.loginFail ? "Sorry, but you entered the wrong username or password." : null}
-                <Link to="/Signup">Signup for our service</Link>
+            <div className="container">
+                <h1>AbleTo Questionnaire Assignment</h1>
+                <div className="credentials">
+                    <br/>
+                    <form onSubmit={evt => submitHandler(evt)}>
+                        <input className="textInput" type='text'required
+                            name="email"
+                            placeholder="email"
+                            value={this.state.email}
+                            onChange={(event) => { handleChange(event) }}
+                        />
+                        <input className="passwordInput" type='password' required
+                            name="password"
+                            placeholder="password"
+                            value={this.state.password}
+                            onChange={(event) => { handleChange(event) }}
+                        />
+                        <button type="submit">login</button>
+                    </form>
+                    {this.props.loginFail ? <div className="Warning">Sorry, but you entered an invalid username or password.</div>  : null}
+                    <Link to="/Signup">Signup for our service</Link>
+                </div>
             </div>
         )
     }

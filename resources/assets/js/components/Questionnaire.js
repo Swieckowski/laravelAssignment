@@ -20,9 +20,11 @@ class Questionnaire extends Component {
             else return true;
         })
         return (
-            <div>
-                <Link to="/">Back to questionnaire list </Link>
-                <LogOutButton />
+            <div className="container">
+                <div className="apart">
+                    <Link to="/">Back to list </Link>
+                    <LogOutButton />
+                </div>
 
                 {this.props.answers.length ? <h1>Answered Questions</h1> : null}
                 <div className="answerList">
@@ -32,7 +34,7 @@ class Questionnaire extends Component {
                         return <div key={answer.id}><Question {...props} /></div>
                     })}
                 </div>
-                <h1>Unanswered Questions</h1>
+                {unAnsweredQuestions.length ? <h1>Unanswered Questions</h1> : null}
                 <div className="questionList">
                     {unAnsweredQuestions.map(question => {
                         const props = { question, attempt_id, answered: false, user_id: this.props.user_id }
