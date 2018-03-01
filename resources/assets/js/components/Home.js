@@ -8,6 +8,7 @@ import { loadAttempts } from '../store'
 class Home extends Component {
     componentDidMount() {
         this.props.loadData(this.props.user_id)
+        this.props.history.push("/")
     }
 
     render() {
