@@ -14,8 +14,8 @@ class AnswerHistory extends Component {
                 <div className="apart">
                     <Link to="/">Back to list </Link>
                     <LogOutButton />
-                    <br/>
                 </div>
+                    <br/>
                 <div className="questionnaire">
                     <h1>Answer History</h1>
 
