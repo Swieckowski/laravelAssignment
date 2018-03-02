@@ -27,13 +27,13 @@ class AnswerController extends Controller
         return response()->json($newAnswer, 200);
     }
 
-    public function history(){
+    public function history($answer,$user_id,$question_id){
         $answerHistory = DB::table('answers')
-        ->where('user_id', '=', $user_id)
-        ->where('question_id', '=', $question_id)
-        ->where('answer', '=', $answer)
-        ->orderBy('attempt_id')
-        ->pluck('attempt_id');
+            ->where('user_id', '=', $user_id)
+            ->where('question_id', '=', $question_id)
+            ->where('answer', '=', $answer)
+            ->orderBy('attempt_id')
+            ->pluck('attempt_id');
         return response()->json($answerHistory, 200);
     }
 }
