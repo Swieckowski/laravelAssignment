@@ -22,9 +22,9 @@ class AnswerHistory extends Component {
                     <div className="question">{this.props.answerHistory.question}</div>
                     <div className="centerText">
                         {this.props.answerHistory.answer}
+                        <br />
                         You responded to the question this way in the following questionnaires:
                     </div>
-                    <br />
                     <div className="questionnaires">
 
                         {this.props.answerHistory.attempts.length ?
