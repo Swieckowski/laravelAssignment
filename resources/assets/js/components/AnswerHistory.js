@@ -41,4 +41,4 @@ const mapStateToProps = (state) => ({
     attempts: state.attempts
 })
 
-export default connect(mapStateToProps)(Questionnaires)
+export default connect(mapStateToProps)(AnswerHistory)
