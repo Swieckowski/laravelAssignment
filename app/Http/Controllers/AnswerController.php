@@ -31,7 +31,6 @@ class AnswerController extends Controller
         $answerHistory = DB::table('answers')
             ->where('user_id', '=', $user_id)
             ->where('question_id', '=', $question_id)
-            ->where('answer', '=', $answer)
             ->orderBy('attempt_id')
             ->pluck('attempt_id');
         return response()->json($answerHistory, 200);
