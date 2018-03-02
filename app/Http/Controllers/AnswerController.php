@@ -26,4 +26,14 @@ class AnswerController extends Controller
             ->update(['answer' => request()->input('answer')]);
         return response()->json($newAnswer, 200);
     }
+
+    public function history(){
+        $answerHistory = DB::table('answers')
+        ->where('user_id', '=', $user_id)
+        ->where('question_id', '=', $question_id)
+        ->where('answer', '=', $answer)
+        ->orderBy('attempt_id')
+        ->pluck('attempt_id');
+        return response()->json($answerHistory, 200);
+    }
 }

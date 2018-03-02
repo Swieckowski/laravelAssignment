@@ -577,19 +577,21 @@ module.exports = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__attempts__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__questions__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__answers__ = __webpack_require__(159);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_3__loggedIn__["b"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_3__loggedIn__["c"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__answerHistory__ = __webpack_require__(162);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_3__loggedIn__["b"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_3__loggedIn__["c"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_4__user__["a"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_4__user__["b"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_4__user__["d"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "n", function() { return __WEBPACK_IMPORTED_MODULE_4__user__["e"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "n", function() { return __WEBPACK_IMPORTED_MODULE_4__user__["d"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "o", function() { return __WEBPACK_IMPORTED_MODULE_4__user__["e"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_5__attempts__["a"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_5__attempts__["c"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_6__questions__["b"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_6__questions__["b"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_7__answers__["a"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_7__answers__["b"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_7__answers__["c"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_7__answers__["e"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_8__answerHistory__["b"]; });
 
 
 
@@ -599,10 +601,12 @@ module.exports = {
 
 
 
-var reducer = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({ loggedIn: __WEBPACK_IMPORTED_MODULE_3__loggedIn__["a" /* default */], user: __WEBPACK_IMPORTED_MODULE_4__user__["c" /* default */], attempts: __WEBPACK_IMPORTED_MODULE_5__attempts__["b" /* default */], questions: __WEBPACK_IMPORTED_MODULE_6__questions__["a" /* default */], answers: __WEBPACK_IMPORTED_MODULE_7__answers__["d" /* default */] });
+
+var reducer = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({ loggedIn: __WEBPACK_IMPORTED_MODULE_3__loggedIn__["a" /* default */], user: __WEBPACK_IMPORTED_MODULE_4__user__["c" /* default */], attempts: __WEBPACK_IMPORTED_MODULE_5__attempts__["b" /* default */], questions: __WEBPACK_IMPORTED_MODULE_6__questions__["a" /* default */], answers: __WEBPACK_IMPORTED_MODULE_7__answers__["d" /* default */], answerHistory: __WEBPACK_IMPORTED_MODULE_8__answerHistory__["a" /* default */] });
 var store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(reducer, Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(__WEBPACK_IMPORTED_MODULE_2_redux_thunk___default.a, Object(__WEBPACK_IMPORTED_MODULE_1_redux_logger__["createLogger"])()));
 
 /* harmony default export */ __webpack_exports__["g"] = (store);
+
 
 
 
@@ -3468,7 +3472,7 @@ var addAttempt = function addAttempt(user_id) {
     case GOT_ATTEMPTS:
       return action.payload;
     case CLEAR_ATTEMPTS:
-      return state;
+      return initialState;
     default:
       return state;
   }
@@ -25820,11 +25824,11 @@ var mapState = function mapState(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
         loadData: function loadData() {
-            dispatch(Object(__WEBPACK_IMPORTED_MODULE_9__store__["j" /* loadQuestions */])());
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_9__store__["k" /* loadQuestions */])());
         },
         login: function login(user) {
-            dispatch(Object(__WEBPACK_IMPORTED_MODULE_9__store__["n" /* userLoadAction */])(user));
-            dispatch(Object(__WEBPACK_IMPORTED_MODULE_9__store__["k" /* logInAction */])());
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_9__store__["o" /* userLoadAction */])(user));
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_9__store__["l" /* logInAction */])());
         }
     };
 };
@@ -27898,7 +27902,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
         handleSubmit: function handleSubmit(state) {
-            dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["m" /* loginUser */])({ email: state.email, password: state.password }));
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["n" /* loginUser */])({ email: state.email, password: state.password }));
         }
     };
 };
@@ -28274,7 +28278,7 @@ function LogOutButton(props) {
 var mapDispatch = function mapDispatch(dispatch, ownProps) {
     return {
         logOut: function logOut(history) {
-            dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["l" /* logOutAction */])());
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["m" /* logOutAction */])());
             dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["f" /* clearUserAction */])());
             ownProps.history.push('/');
         }
@@ -28348,6 +28352,14 @@ var Questionnaire = function (_Component) {
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__LogOutButton__["a" /* default */], null)
                 ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "button",
+                    {
+                        className: "history button",
+                        onClick: this.props.loadHistory
+                    },
+                    "Log Out"
+                ),
                 this.props.answers.length ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "h1",
                     null,
@@ -28405,6 +28417,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
         loadAnswers: function loadAnswers(attempt_id) {
             dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["h" /* loadAnswers */])(attempt_id));
+        },
+        loadHistory: function loadHistory() {
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["j" /* loadHistory */])("Question", "Poorly", 1, 1));
         }
     };
 };
@@ -28778,6 +28793,74 @@ function Answered(props) {
         props.answer.answer
     );
 }
+
+/***/ }),
+/* 162 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export clearAttemptsAction */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return loadHistory; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+
+
+var initialState = { question: "", answer: "", attempts: []
+  /**
+   * ACTION TYPES
+   */
+};var GOT_HISTORY = 'GOT_HISTORY';
+var CLEAR_HISTORY = 'CLEAR_HISTORY';
+
+/**
+ * ACTION CREATORS
+ */
+var historyLoadAction = function historyLoadAction(data) {
+  return {
+    type: GOT_ATTEMPTS,
+    payload: data
+  };
+};
+
+var clearAttemptsAction = function clearAttemptsAction(payload) {
+  return { type: CLEAR_ATTEMPTS };
+};
+
+/**
+ * THUNKS
+ */
+var loadHistory = function loadHistory(question, answer, user_id, question_id) {
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get("/answer/history/" + answer + "/" + user_id + "/" + question_id).then(function (response) {
+      return response.data;
+    }).then(function (data) {
+      console.log(data);
+      data.question = question;
+      data.answer = answer;
+      dispatch(attemptsLoadAction(data));
+    }).catch(function (error) {
+      return console.log(error);
+    });
+  };
+};
+
+/**
+ * REDUCER
+ */
+/* harmony default export */ __webpack_exports__["a"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case GOT_HISTORY:
+      var data = action.payload;
+      return Object.assign({}, state, { question: data.question, answer: data.answer });
+    case CLEAR_HISTORY:
+      return initialState;
+    default:
+      return state;
+  }
+});
 
 /***/ })
 /******/ ]);
