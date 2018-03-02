@@ -61,7 +61,7 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(loadAnswers(attempt_id))
     },
     loadHistory(){
-        dispatch(loadHistory("Question","Poorly",1,1))
+        dispatch(loadHistory("Question","Poorly.",1,1))
     }
 });
 

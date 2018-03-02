@@ -28419,7 +28419,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
             dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["h" /* loadAnswers */])(attempt_id));
         },
         loadHistory: function loadHistory() {
-            dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["j" /* loadHistory */])("Question", "Poorly", 1, 1));
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["j" /* loadHistory */])("Question", "Poorly.", 1, 1));
         }
     };
 };
