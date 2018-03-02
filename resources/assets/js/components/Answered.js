@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom'
 import { loadHistory } from '../store'
 
 
@@ -10,10 +11,12 @@ function Answered(props) {
             <div className="question">{props.question.question}</div>
             <br />
             {props.answer.answer}
-            <button
-                className='history button'
-                onClick={()=>props.loadHistory(props.question.question,props.answer.answer,props.question.id,props.user_id)}
-            >View Answer History</button>
+            <Link to="/answerHistory">
+                <button
+                    className='history button'
+                    onClick={() => props.loadHistory(props.question.question, props.answer.answer, props.question.id, props.user_id)}
+                >View Answer History</button>
+            </Link>
         </div>
     );
 
@@ -24,9 +27,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    loadHistory(question, answer, question_id, user_id){
-        dispatch(loadHistory(question,answer,question_id,user_id))
-        // ownProps.history.push("/answerHistory")
+    loadHistory(question, answer, question_id, user_id) {
+        dispatch(loadHistory(question, answer, question_id, user_id))
     }
 });
 

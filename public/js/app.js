@@ -28773,7 +28773,9 @@ var UnAnswered = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store__ = __webpack_require__(6);
+
 
 
 
@@ -28791,14 +28793,18 @@ function Answered(props) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
         props.answer.answer,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'button',
-            {
-                className: 'history button',
-                onClick: function onClick() {
-                    return props.loadHistory(props.question.question, props.answer.answer, props.question.id, props.user_id);
-                }
-            },
-            'View Answer History'
+            __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["a" /* Link */],
+            { to: '/answerHistory' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'button',
+                {
+                    className: 'history button',
+                    onClick: function onClick() {
+                        return props.loadHistory(props.question.question, props.answer.answer, props.question.id, props.user_id);
+                    }
+                },
+                'View Answer History'
+            )
         )
     );
 }
@@ -28812,8 +28818,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     return {
         loadHistory: function loadHistory(question, answer, question_id, user_id) {
-            dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__store__["j" /* loadHistory */])(question, answer, question_id, user_id));
-            // ownProps.history.push("/answerHistory")
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["j" /* loadHistory */])(question, answer, question_id, user_id));
         }
     };
 };
