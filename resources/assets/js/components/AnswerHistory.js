@@ -15,15 +15,17 @@ class AnswerHistory extends Component {
                     <Link to="/">Back to list </Link>
                     <LogOutButton />
                 </div>
-                    <br/>
+                <br />
                 <div className="questionnaire">
                     <h1>Answer History</h1>
 
                     <div className="question">{this.props.answerHistory.question}</div>
-                    {this.props.answerHistory.answer}
+                    <div className="centerText">
+                        {this.props.answerHistory.answer}
+                        You responded to the question this way in the following questionnaires:
+                    </div>
                     <br />
-                    You responded to the question this way in the following questionnaires:
-                <div className="questionnaires">
+                    <div className="questionnaires">
 
                         {this.props.answerHistory.attempts.length ?
                             <ul>
