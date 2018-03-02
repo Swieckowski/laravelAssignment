@@ -28835,7 +28835,7 @@ var loadHistory = function loadHistory(question, answer, user_id, question_id) {
       return response.data;
     }).then(function (data) {
       var dataObject = { question: question, answer: answer, attempts: data };
-      dispatch(attemptsLoadAction(dataObject));
+      dispatch(historyLoadAction(dataObject));
     }).catch(function (error) {
       return console.log(error);
     });

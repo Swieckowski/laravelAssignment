@@ -27,7 +27,7 @@ export const loadHistory = (question, answer, user_id, question_id) => dispatch 
 	.then(response => response.data)
 	.then(data => {
        const dataObject = {question, answer, attempts:data}
-        dispatch(attemptsLoadAction(dataObject))
+        dispatch(historyLoadAction(dataObject))
     })
 	.catch(error=>console.log(error));
 }
