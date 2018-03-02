@@ -28776,8 +28776,6 @@ var UnAnswered = function (_Component) {
 
 
 function Answered(props) {
-    var _this = this;
-
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'answered' },
@@ -28793,7 +28791,7 @@ function Answered(props) {
             {
                 className: 'history button',
                 onClick: function onClick() {
-                    return _this.props.loadHistory(props.question.question, props.answer.answer, props.question.id, props.user_id);
+                    return props.loadHistory(props.question.question, props.answer.answer, props.question.id, props.user_id);
                 }
             },
             'View Answer History'

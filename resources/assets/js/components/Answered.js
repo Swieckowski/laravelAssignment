@@ -11,7 +11,7 @@ function Answered(props) {
             {props.answer.answer}
             <button
                 className='history button'
-                onClick={()=>this.props.loadHistory(props.question.question,props.answer.answer,props.question.id,props.user_id)}
+                onClick={()=>props.loadHistory(props.question.question,props.answer.answer,props.question.id,props.user_id)}
             >View Answer History</button>
         </div>
     );
