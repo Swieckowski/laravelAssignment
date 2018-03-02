@@ -5,7 +5,6 @@ import { loadHistory } from '../store'
 
 
 function Answered(props) {
-    console.log(props)
     return (
         <div className="answered">
             <div className="question">{props.question.question}</div>
