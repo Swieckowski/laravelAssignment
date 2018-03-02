@@ -10,7 +10,7 @@ class AnswerHistory extends Component {
             <div className="questionnaire">
                 <h1>Answer History</h1>
 
-                <div className="question">{this.props.answerHistor.question}</div>
+                <div className="question">{this.props.answerHistory.question}</div>
                 <br />
                 {this.props.answerHistory.answer}
                 <br />
