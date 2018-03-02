@@ -28817,7 +28817,7 @@ var CLEAR_HISTORY = 'CLEAR_HISTORY';
  */
 var historyLoadAction = function historyLoadAction(data) {
   return {
-    type: GOT_ATTEMPTS,
+    type: GOT_HISTORY,
     payload: data
   };
 };

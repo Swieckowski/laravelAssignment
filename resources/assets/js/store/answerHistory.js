@@ -12,7 +12,7 @@ const CLEAR_HISTORY = 'CLEAR_HISTORY'
  */
 const historyLoadAction = (data) => {
 	return {
-		type: GOT_ATTEMPTS,
+		type: GOT_HISTORY,
 		payload: data
 	}
 }
