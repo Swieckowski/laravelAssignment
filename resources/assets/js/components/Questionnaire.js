@@ -25,10 +25,7 @@ class Questionnaire extends Component {
                     <Link to="/">Back to list </Link>
                     <LogOutButton />
                 </div>
-                <button
-                    className='history button'
-                    onClick={this.props.loadHistory}
-                >Log Out</button>
+
                 {this.props.answers.length ? <h1>Answered Questions</h1> : null}
                 <div className="answerList">
                     {this.props.answers.map(answer => {

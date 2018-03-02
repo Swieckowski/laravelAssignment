@@ -28352,14 +28352,6 @@ var Questionnaire = function (_Component) {
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__LogOutButton__["a" /* default */], null)
                 ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "button",
-                    {
-                        className: "history button",
-                        onClick: this.props.loadHistory
-                    },
-                    "Log Out"
-                ),
                 this.props.answers.length ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "h1",
                     null,
@@ -28775,24 +28767,55 @@ var UnAnswered = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = Answered;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(6);
+
+
 
 
 function Answered(props) {
+    var _this = this;
+
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        "div",
-        { className: "answered" },
+        'div',
+        { className: 'answered' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
-            { className: "question" },
+            'div',
+            { className: 'question' },
             props.question.question
         ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
-        props.answer.answer
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+        props.answer.answer,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'button',
+            {
+                className: 'history button',
+                onClick: function onClick() {
+                    return _this.props.loadHistory(props.question.question, props.answer.answer, props.question.id, props.user_id);
+                }
+            },
+            'View Answer History'
+        )
     );
 }
+
+var mapStateToProps = function mapStateToProps(state) {
+    return {
+        user_id: state.user.id
+    };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        loadHistory: function loadHistory(question, answer, question_id, user_id) {
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__store__["j" /* loadHistory */])(question, answer, question_id, user_id));
+        }
+    };
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(Answered));
 
 /***/ }),
 /* 162 */
