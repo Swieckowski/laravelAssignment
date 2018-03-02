@@ -24,7 +24,7 @@ The API is quite self explanatory, as it is RESTFUL, however, there is one route
 
 The frontend views are reasonably component based for the scale of this project, the only slightly confusing implementation could be Question.js, which chooses the correct component for each question and passes it the right thunk. For example, the edit view uses the same component as the unanswered question view, but Question.js passes it the right thunk for post v put requests. 
 
-An operation that could be slightly confusing is the filtering performed to seperate Answered and Unanswered questions in the same view. The operation is O(n^2) and basically just checks which questions have an answer with that ID and which do not.
+An operation found in Questionnaire.js that could be slightly confusing is the filtering performed to seperate Answered and Unanswered questions in the same view. The operation is O(n^2) and basically just checks which questions have an answer with that ID and which do not then filter accordingly.
 
 Information in this project is called only as necessary. For example, the answers for a given questionnaire are only requested and stored once that questionnaire is viewed, and only one set of answers is stored at a time. 
 
