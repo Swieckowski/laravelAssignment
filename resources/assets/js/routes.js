@@ -8,6 +8,7 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import Home from './components/Home'
 import Questionnaire from './components/Questionnaire'
+import AnswerHistory from './components/AnswerHistory'
 
 import { userLoadAction, logInAction, loadQuestions } from './store'
 
@@ -37,6 +38,7 @@ class Routes extends Component {
                 <Switch>
                     <Route exact path='/' component={Home} />
                     <Route path="/questionnaire/:attempt_id" component={Questionnaire} />
+                    <Route path="/answerHistory" component={AnswerHistory} />
                     <Route path='/' component={Home} />
                 </Switch>
             </Router>

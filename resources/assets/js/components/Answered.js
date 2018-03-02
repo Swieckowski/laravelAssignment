@@ -25,6 +25,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     loadHistory(question, answer, question_id, user_id){
         dispatch(loadHistory(question,answer,question_id,user_id))
+        props.history.push("/answerHistory")
     }
 });
 
