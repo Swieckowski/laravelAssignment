@@ -28834,10 +28834,8 @@ var loadHistory = function loadHistory(question, answer, user_id, question_id) {
     __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get("/answer/history/" + answer + "/" + user_id + "/" + question_id).then(function (response) {
       return response.data;
     }).then(function (data) {
-      console.log(data);
-      data.question = question;
-      data.answer = answer;
-      dispatch(attemptsLoadAction(data));
+      var dataObject = { question: question, answer: answer, attempts: data };
+      dispatch(attemptsLoadAction(dataObject));
     }).catch(function (error) {
       return console.log(error);
     });
@@ -28853,8 +28851,7 @@ var loadHistory = function loadHistory(question, answer, user_id, question_id) {
 
   switch (action.type) {
     case GOT_HISTORY:
-      var data = action.payload;
-      return Object.assign({}, state, { question: data.question, answer: data.answer });
+      return Object.assign({}, state, action.payload);
     case CLEAR_HISTORY:
       return initialState;
     default:
