@@ -33,7 +33,7 @@ class AnswerHistory extends Component {
                                 {this.props.answerHistory.attempts.map(attempt => {
                                     const found = this.props.attempts.find(generalAttempt => generalAttempt.id === attempt)
                                     return (
-                                        <li key={attempt.id}>
+                                        <li key={found.id}>
                                             <Link className="questionaireLink" to={`/questionnaire/${found.id}`}>
                                                 Qns. | created: {found.created_at.slice(0, 10)}
                                             </Link>

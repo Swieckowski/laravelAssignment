@@ -28974,7 +28974,7 @@ var AnswerHistory = function (_Component) {
                                 });
                                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'li',
-                                    { key: attempt.id },
+                                    { key: found.id },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["a" /* Link */],
                                         { className: 'questionaireLink', to: '/questionnaire/' + found.id },
