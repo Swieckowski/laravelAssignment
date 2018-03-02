@@ -49,7 +49,7 @@ export default function (state = initialState, action) {
         case GOT_ATTEMPTS:
             return action.payload
         case CLEAR_ATTEMPTS:
-            return state
+            return initialState
         default:
             return state
     }

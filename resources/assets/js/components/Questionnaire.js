@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Question from './Question'
-import { loadAnswers } from '../store'
+import { loadAnswers, loadHistory } from '../store'
 import LogOutButton from './LogOutButton'
 import { Link } from 'react-router-dom'
 
@@ -25,7 +25,10 @@ class Questionnaire extends Component {
                     <Link to="/">Back to list </Link>
                     <LogOutButton />
                 </div>
-
+                <button
+                    className='history button'
+                    onClick={this.props.loadHistory}
+                >Log Out</button>
                 {this.props.answers.length ? <h1>Answered Questions</h1> : null}
                 <div className="answerList">
                     {this.props.answers.map(answer => {
@@ -56,6 +59,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     loadAnswers(attempt_id) {
         dispatch(loadAnswers(attempt_id))
+    },
+    loadHistory(){
+        dispatch(loadHistory("Question","Poorly",1,1))
     }
 });
 

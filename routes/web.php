@@ -18,6 +18,9 @@ Route::get('/attempts/{user_id}', 'AttemptController@userIndex');
 
 Route::get('/attempt/answers/{attempt_id}', 'AttemptController@attemptAnswersIndex');
 
+Route::get('/answer/history/{answer}/{user_id}/{question_id}', 'AnswerController@history');
+
+
 Route::get('{all}', function () {
     return view('index');
 })->where('all', '.*');
