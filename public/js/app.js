@@ -28808,11 +28808,11 @@ var mapStateToProps = function mapStateToProps(state) {
     };
 };
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     return {
         loadHistory: function loadHistory(question, answer, question_id, user_id) {
             dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__store__["j" /* loadHistory */])(question, answer, question_id, user_id));
-            props.history.push("/answerHistory");
+            ownProps.history.push("/answerHistory");
         }
     };
 };

@@ -22,10 +22,10 @@ const mapStateToProps = (state) => ({
     user_id: state.user.id,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
     loadHistory(question, answer, question_id, user_id){
         dispatch(loadHistory(question,answer,question_id,user_id))
-        props.history.push("/answerHistory")
+        ownProps.history.push("/answerHistory")
     }
 });
 
