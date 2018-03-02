@@ -28962,6 +28962,7 @@ var AnswerHistory = function (_Component) {
                         { className: 'centerText' },
                         this.props.answerHistory.answer,
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
                         'You responded to the question this way in the following questionnaires:'
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(

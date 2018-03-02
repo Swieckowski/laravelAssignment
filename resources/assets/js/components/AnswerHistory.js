@@ -23,6 +23,7 @@ class AnswerHistory extends Component {
                     <div className="centerText">
                         {this.props.answerHistory.answer}
                         <br />
+                        <br />
                         You responded to the question this way in the following questionnaires:
                     </div>
                     <div className="questionnaires">
