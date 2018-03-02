@@ -4,11 +4,11 @@ Simple code assignment for AbleTo
 >Think of this exercise as if someone goes through a set of questions day after day that he/she needs to answer and then sees the results. Once users log in, have them answer a set of "behavioral" questions (how they feel, what they did today, what they had for breakfast - 3-4 questions is fine) and then please display their answers.
 
 This requirement is met by the questionnaire view, where a user gets all available questions. There, once a user answers a question, it's added to the answered list.
-Both answered and unanswered questions are in this view, and a user can choose to to edit their answers if they please.
+Both answered and unanswered questions are in this view, and a user can choose to edit their answers if they please.
 
 >The answers to the questions should be multiple-choice / structured format (not free form where you can type in your answer). This way you can build a report or some dashboard around answer's history.
 
-This requirement is met in that answers are all multiple choice, and one a user has answered a question, they can click the View Answer History button to check what other questionnaires they responded to the same way.
+This requirement is met in that answers are all multiple choice, and once a user has answered a question, they can click the View Answer History button to check what other questionnaires they responded to the same way.
 
 >For example, the question could be asked "what did you eat today for breakfast ?" with answers "eggs, cereal, toast" and you could select a different answer each "day" (for the purposes of this exercise a concept of each "day" could mean each "try" ). 
 
