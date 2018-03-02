@@ -28779,6 +28779,7 @@ var UnAnswered = function (_Component) {
 
 
 function Answered(props) {
+    console.log(props);
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'answered' },
@@ -28812,7 +28813,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     return {
         loadHistory: function loadHistory(question, answer, question_id, user_id) {
             dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__store__["j" /* loadHistory */])(question, answer, question_id, user_id));
-            ownProps.history.push("/answerHistory");
+            // ownProps.history.push("/answerHistory")
         }
     };
 };

@@ -4,6 +4,7 @@ import { loadHistory } from '../store'
 
 
 function Answered(props) {
+    console.log(props)
     return (
         <div className="answered">
             <div className="question">{props.question.question}</div>
@@ -25,7 +26,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
     loadHistory(question, answer, question_id, user_id){
         dispatch(loadHistory(question,answer,question_id,user_id))
-        ownProps.history.push("/answerHistory")
+        // ownProps.history.push("/answerHistory")
     }
 });
 
