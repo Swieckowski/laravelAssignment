@@ -28959,7 +28959,7 @@ var AnswerHistory = function (_Component) {
                                 )
                             );
                         })
-                    ) : null
+                    ) : "You did not choose an answer to view the history of."
                 )
             );
         }
@@ -28975,7 +28975,7 @@ var mapStateToProps = function mapStateToProps(state) {
     };
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(Questionnaires));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(mapStateToProps)(Questionnaires));
 
 /***/ })
 /******/ ]);

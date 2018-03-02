@@ -29,7 +29,7 @@ class AnswerHistory extends Component {
                                     </li>
                                 )
                             })}
-                        </ul> : null}
+                        </ul> : "You did not choose an answer to view the history of."}
 
                 </div>
             </div>)
@@ -41,4 +41,4 @@ const mapStateToProps = (state) => ({
     attempts: state.attempts
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Questionnaires)
+export default connect(mapStateToProps)(Questionnaires)
