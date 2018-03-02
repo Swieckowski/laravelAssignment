@@ -28,7 +28,7 @@ An operation found in Questionnaire.js that could be slightly confusing is the f
 
 Information in this project is called only as necessary. For example, the answers for a given questionnaire are only requested and stored once that questionnaire is viewed, and only one set of answers is stored at a time. 
 
-The backend is supported entirely by Laravel, and the front end necessitated ordinary dependencies such as redux for storage, axios for API requests, and React in general.
+The backend is supported entirely by Laravel, and the front end necessitated ordinary dependencies such as redux for storage, axios for API requests, and React in general. There is also a redux middleware that shows what's going on in Redux that was a great development tool, which I decided to keep for you guys to easily see what's going on there through dev tools.
 
 However, I do wish I had another dependency. That being laravel passport, which I did not have the time to figure out and implement.
 
