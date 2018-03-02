@@ -28900,6 +28900,7 @@ var loadHistory = function loadHistory(question, answer, user_id, question_id) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__LogOutButton__ = __webpack_require__(154);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28907,6 +28908,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
 
 
 
@@ -28929,43 +28932,56 @@ var AnswerHistory = function (_Component) {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'questionnaire' },
+                { className: 'container' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'h1',
-                    null,
-                    'Answer History'
+                    'div',
+                    { className: 'apart' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["a" /* Link */],
+                        { to: '/' },
+                        'Back to list '
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__LogOutButton__["a" /* default */], null)
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: 'question' },
-                    this.props.answerHistory.question
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-                this.props.answerHistory.answer,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-                'You responded to the question this way in the following questionnaires:',
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'questionnaires' },
-                    this.props.answerHistory.attempts.length ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'ul',
+                    { className: 'questionnaire' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'h1',
                         null,
-                        this.props.answerHistory.attempts.map(function (attempt) {
-                            var found = _this2.props.attempts.find(function (generalAttempt) {
-                                return generalAttempt.id === attempt;
-                            });
-                            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'li',
-                                { key: attempt.id },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["a" /* Link */],
-                                    { className: 'questionaireLink', to: '/questionnaire/' + found.id },
-                                    'Qns. | created: ',
-                                    found.created_at.slice(0, 10)
-                                )
-                            );
-                        })
-                    ) : "You did not choose an answer to view the history of."
+                        'Answer History'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'question' },
+                        this.props.answerHistory.question
+                    ),
+                    this.props.answerHistory.answer,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+                    'You responded to the question this way in the following questionnaires:',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'questionnaires' },
+                        this.props.answerHistory.attempts.length ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'ul',
+                            null,
+                            this.props.answerHistory.attempts.map(function (attempt) {
+                                var found = _this2.props.attempts.find(function (generalAttempt) {
+                                    return generalAttempt.id === attempt;
+                                });
+                                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'li',
+                                    { key: attempt.id },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["a" /* Link */],
+                                        { className: 'questionaireLink', to: '/questionnaire/' + found.id },
+                                        'Qns. | created: ',
+                                        found.created_at.slice(0, 10)
+                                    )
+                                );
+                            })
+                        ) : "You did not choose an answer to view the history of."
+                    )
                 )
             );
         }
