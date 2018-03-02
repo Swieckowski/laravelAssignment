@@ -56,9 +56,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     loadAnswers(attempt_id) {
         dispatch(loadAnswers(attempt_id))
-    },
-    loadHistory(){
-        dispatch(loadHistory("Question","Poorly.",1,1))
     }
 });
 

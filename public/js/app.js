@@ -28412,9 +28412,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
         loadAnswers: function loadAnswers(attempt_id) {
             dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["h" /* loadAnswers */])(attempt_id));
-        },
-        loadHistory: function loadHistory() {
-            dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__store__["j" /* loadHistory */])("Question", "Poorly.", 1, 1));
         }
     };
 };
@@ -28800,7 +28797,7 @@ function Answered(props) {
                 {
                     className: 'history button',
                     onClick: function onClick() {
-                        return props.loadHistory(props.question.question, props.answer.answer, props.question.id, props.user_id);
+                        return props.loadHistory(props.question.question, props.answer.answer, props.user_id, props.question.id);
                     }
                 },
                 'View Answer History'
