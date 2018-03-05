@@ -37,8 +37,6 @@ and found that convention was a great safeguard.
 
 Unfortunately, I ran into unexpected deployment issues and a Mixed Content bug that ate up the majority of this last day working on the project. This was a hard lesson in deployment not being a last minute venture. New issues can pop up in deployment, and I suffered for that mistake in that what I thought was going to be a day spent learning how to test in Laravel and writing those tests was spent on debugging.
 
-Though I realize that I will most likely still be penalized for the lack of tests as of right now, I will write some tests tomorrow for the sake of my own learning experience.
-
 Thank you for the opportunity.
 
 
