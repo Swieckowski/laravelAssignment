@@ -12,11 +12,11 @@
 */
 
 // GET
-Route::get('/questions', 'QuestionsController@index');
+Route::get('/questions', 'QuestionsController@index'); //tested
 
-Route::get('/attempts/{user_id}', 'AttemptController@userIndex');
+Route::get('/attempts/{user_id}', 'AttemptController@userIndex'); //tested
 
-Route::get('/attempt/answers/{attempt_id}', 'AttemptController@attemptAnswersIndex');
+Route::get('/attempt/answers/{attempt_id}', 'AttemptController@attemptAnswersIndex'); 
 
 Route::get('/answer/history/{answer}/{user_id}/{question_id}', 'AnswerController@history');
 
@@ -26,13 +26,13 @@ Route::get('{all}', function () {
 })->where('all', '.*');
 
 // POST
-Route::post('/attempts', 'AttemptController@store');
+Route::post('/attempts', 'AttemptController@store'); //tested
 
-Route::post('/answer', 'AnswerController@store');
+Route::post('/answer', 'AnswerController@store'); //tested
 
-Route::post('/signup', 'Auth\RegisterController@store');
+Route::post('/signup', 'Auth\RegisterController@store'); //tested
 
-Route::post('/login', 'Auth\LoginController@create');
+Route::post('/login', 'Auth\LoginController@create'); //tested
 
 // PUT
-Route::put('/answer', 'AnswerController@change');
+Route::put('/answer', 'AnswerController@change'); //tested
