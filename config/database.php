@@ -1,13 +1,5 @@
 <?php
 
-$url = parse_url(getenv("mysql://bd3d3ddf3d74d4:46ba37b5@us-cdbr-iron-east-05.cleardb.net/heroku_ae8a60c612633f9?reconnect=true"));
-
-$host = $url["host"];
-$port = $url["port"];
-$username = $url["user"];
-$password = $url["pass"];
-$database = substr($url["path"], 1);
-
 return [
 
     /*
@@ -43,7 +35,7 @@ return [
 
         'sqlite' => [
             'driver' => 'sqlite',
-            'database' => env('DB_DATABASE', database_path('database.sqlite')),
+            'database' => ':memory:',
             'prefix' => '',
         ],
 

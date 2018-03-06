@@ -28778,7 +28778,6 @@ var UnAnswered = function (_Component) {
 
 
 function Answered(props) {
-    console.log(props);
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'answered' },
